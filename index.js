@@ -15,10 +15,14 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/mostrarnumeros', async (req, res) => {
-  let num1=req.body.numero1;
-  let num2=req.body.numero2;  
+  let ciudadR=req.body.ciudadR;
+  let ciudadD=req.body.ciudadD;  
+  let kilos=req.body.kilos;
+  let unidades=req.body.unidades;
+  let seguro=req.body.seguro;
+  let recaudo=req.body.recaudo;
 
-  let pagina='<!doctype html><html><head></head><body>';
+  let pagina='<!doctype html><html><head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head><body>';
 
 
 
@@ -28,12 +32,12 @@ app.post('/mostrarnumeros', async (req, res) => {
     const html = await request.post("https://www.aveonline.co/app/modulos/ofertadeservicio/?ver=1&idcampo=MjAxOTA3MjkxNTU4NTkxMTYzNS03OTU1Nzg4MQ==", {
 
     form: {
-        dsciudad: num1,
-        dsciudadd: num2,
-        totalkilos: "1",
-        unidadesx: "1",
-        totalvalo: "3",
-        dsvalorrecaudo: "0",
+        dsciudad: ciudadR,
+        dsciudadd: ciudadD,
+        totalkilos: kilos,
+        unidadesx: unidades,
+        totalvalo: seguro,
+        dsvalorrecaudo: recaudo,
         enviar: "CALCULAR",
         idcampo: "MjAxOTA3MjkxNTU4NTkxMTYzNS03OTU1Nzg4MQ==",
         ver: "1",
@@ -45,10 +49,52 @@ app.post('/mostrarnumeros', async (req, res) => {
     });
 
     const $ = cheerio.load(html);
+    const trayectotcc=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(2) > strong").text();
     const valor=$("#div2 > div > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(6) > strong").text();
-    const valorenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(11)");
-    pagina += `<a>precio envio TCC: "${valor}"</a>
-    <a>precio ENVIA: "${valorenvia}"</a></body></html>`;
+    const tiempotcc=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(2)").text();
+    const trayectoenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(7) > strong").text();
+    const valorEnvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(11)").text();
+    const tiempoenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(3)").text();
+    pagina += `<table class="table table-bordered">
+    <thead>
+      <tr>
+        
+    
+        
+       
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        
+        <th colspan="3"  >TCC</th>
+        
+        <th colspan="3" >ENVIA</th>
+        
+        
+        
+      <tr>
+        <td >TRAYECTO</td>
+        <td>ENVIO</td>
+        <td>TIEMPO DE ENTREGA</td>
+        <td >TRAYECTO</td>
+        <td>ENVIO</td>
+        <td>TIEMPO DE ENTREGA</td>
+
+      </tr>
+      <tr>
+        <td>${trayectotcc}</td>
+        <td>${valor}</td>
+        <td>${tiempotcc}</td>
+        <td>${trayectoenvia}</td>
+        <td>${valorEnvia}</td>
+        <td>${tiempoenvia}</td>
+        
+      </tr>
+    </tbody>
+  </table>`;
+    pagina+='</body></html>';
     
 
 }catch(error){
