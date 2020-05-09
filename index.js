@@ -1,6 +1,6 @@
 const express = require('express');
 const app= express();
-const port = process.env.PORT || "8000";
+const port = process.env.PORT || "7000";
 
 const bodyParser = require('body-parser');
 const request = require("request-promise");
@@ -50,10 +50,31 @@ app.post('/mostrarnumeros', async (req, res) => {
 
     const $ = cheerio.load(html);
     const trayectotcc=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(2) > strong").text();
-    const valor=$("#div2 > div > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(6) > strong").text();
+    var valor=$("#div2 > div > div > div > div > table.table.table-striped > tbody > tr:nth-child(3) > td:nth-child(6) > strong").text();
+     valor=valor.replace("$",'');
+     valor=(parseInt(valor.replace(".","")));
+     
+     if(valor==0){
+        valor=0;
+     }
+     else if(valor<14000){
+       valor=valor+500;
+     }else{
+       valor=valor+750;
+     }
     const tiempotcc=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(2)").text();
     const trayectoenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(7) > strong").text();
-    const valorEnvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(11)").text();;
+    var valorEnvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(11)").text();;
+    valorEnvia=valorEnvia.replace("$","");
+    valorEnvia=(parseInt(valorEnvia.replace(".","")));
+    if(valorEnvia==0){
+      valorEnvia=0;
+   }
+   else if(valorEnvia<14000){
+     valorEnvia=valorEnvia+500;
+   }else{
+     valorEnvia=valorEnvia+750;
+   }
     const tiempoenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(3)").text();
     pagina += `<table class="table table-bordered">
     <thead>
