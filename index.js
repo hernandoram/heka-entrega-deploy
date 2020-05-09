@@ -64,7 +64,7 @@ app.post('/mostrarnumeros', async (req, res) => {
      }
     const tiempotcc=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(2)").text();
     const trayectoenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(7) > strong").text();
-    var valorEnvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(11)").text();;
+    var valorEnvia=$("#div2 > div > div > div > div > table.table.table-striped > tbody > tr:nth-child(3) > td:nth-child(11) > strong").text();
     valorEnvia=valorEnvia.replace("$","");
     valorEnvia=(parseInt(valorEnvia.replace(".","")));
     if(valorEnvia==0){
@@ -128,6 +128,8 @@ app.post('/mostrarnumeros', async (req, res) => {
 res.send(pagina);
 
 });
+
+
 
 
 
