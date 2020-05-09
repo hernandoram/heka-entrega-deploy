@@ -53,7 +53,7 @@ app.post('/mostrarnumeros', async (req, res) => {
     const valor=$("#div2 > div > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(6) > strong").text();
     const tiempotcc=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(2)").text();
     const trayectoenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(7) > strong").text();
-    const valorEnvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(11)").text();
+    const valorEnvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(4) > td:nth-child(11) > strong").text();
     const tiempoenvia=$("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(3)").text();
     pagina += `<table class="table table-bordered">
     <thead>
