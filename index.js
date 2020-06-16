@@ -1109,9 +1109,6 @@ app.post('/estadoGuias', async (req, res) => {
     </form>
 
     `;
-  }else{
-    pagina+=`
-    <p>DATOS NO ENCONTRADOS</p>`;
   }
 
   });
