@@ -1063,7 +1063,7 @@ app.post('/estadoGuias', async (req, res) => {
   
   $("#tabla-clientes-data > tbody > tr").each((index, element) => {
     var destinatari = $(element).find("td:nth-child(10)").text();
-    var codigoDes=destinatari.replace(/[a-z]/gi,"");
+    var codigoDes=destinatari.replace(/[a-z -]/gi,"");
     codigoDes=codigoDes.replace(" ","");
     codigoDes=parseInt(codigoDes);
     codigo=parseInt(codigo);
