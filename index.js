@@ -951,12 +951,8 @@ app.post('/estadoGuias', async (req, res) => {
   if(nombre=="Juan Pablo Molero"){
     var codigo=0007;
   }
-  if(nombre=="Yesika Viviana Perez"){
-    var codigo=0008;
-  }
-  if(nombre=="Daniel benitez"){
-    var codigo=0009;
-  }
+ 
+ 
   if(nombre=="Ximena Cobos"){
     var codigo=0010;
   }
@@ -968,6 +964,12 @@ app.post('/estadoGuias', async (req, res) => {
   }
   if(nombre=="Evelin Rodriguez"){
     var codigo=0013;
+  }
+  if(nombre=="Yesika Viviana Perez"){
+    var codigo=0014;
+  }
+  if(nombre=="Daniel benitez"){
+    var codigo=0015;
   }
   var opcion=req.body.opcion;
   let pagina = '<!doctype html><html><head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head><body>';
