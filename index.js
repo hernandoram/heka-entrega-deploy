@@ -930,6 +930,7 @@ app.post('/crearguiaTCC', async (req, res) => {
 
 app.post('/estadoGuias', async (req, res) => {
   var nombre=req.body.nombre;
+  nombre=nombre.replace(" ","");
   var codigo=0;
   if(nombre=="Natalia Mendoza"){
     var codigo="0001";
