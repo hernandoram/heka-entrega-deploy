@@ -930,47 +930,47 @@ app.post('/crearguiaTCC', async (req, res) => {
 
 app.post('/estadoGuias', async (req, res) => {
   var nombre=req.body.nombre;
-  nombre=nombre.replace(" ","");
+  
   var codigo=0;
-  if(nombre=="NataliaMendoza"){
+  if(nombre=="Natalia Mendoza"){
     var codigo="0001";
   }
-  if(nombre=="NataliaMendozaTV"){
+  if(nombre=="Natalia Mendoza TV"){
     var codigo="0002";
   }
-  if(nombre=="JhonAlexanderPachon"){
+  if(nombre=="Jhon Alexander Pachon"){
     var codigo="0003";
   }
-  if(nombre=="KellyJaimes"){
+  if(nombre=="Kelly Jaimes"){
     var codigo="0004";
   }
-  if(nombre=="YidyCaterine"){
+  if(nombre=="Yidy Caterine"){
     var codigo="0005";
   }
-  if(nombre=="NathalyAlvarez"){
+  if(nombre=="Nathaly Alvarez"){
     var codigo="0006";
   }
-  if(nombre=="JuanPabloMolero"){
+  if(nombre=="Juan Pablo Molero"){
     var codigo="0007";
   }
  
  
-  if(nombre=="XimenaCobos"){
+  if(nombre=="Ximena Cobos"){
     var codigo="0010";
   }
-  if(nombre=="DianaGomez"){
+  if(nombre=="Diana Gomez"){
     var codigo="0011";
   }
-  if(nombre=="LinaJaimes"){
+  if(nombre=="Lina Jaimes"){
     var codigo="0012";
   }
-  if(nombre=="EvelinRodriguez"){
+  if(nombre=="Evelin Rodriguez"){
     var codigo="0013";
   }
-  if(nombre=="YesikaViviana Perez"){
+  if(nombre=="Yesika Viviana Perez"){
     var codigo="0014";
   }
-  if(nombre=="DanielBenitez"){
+  if(nombre=="Daniel Benitez"){
     var codigo="0015";
   }
   var opcion=req.body.opcion;
