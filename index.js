@@ -1699,9 +1699,12 @@ var nomDes=$("body > div.container > dir > div > table > tbody > tr:nth-child(4)
 nomDes=nomDes.replace("Nombre:","");
 nomDes=nomDes.replace("AVE","");
 var dirDes=$("body > div.container > dir > div > table > tbody > tr:nth-child(5) > td:nth-child(2)").html();
-//dirDes=dirDes.replace("Dirección:","");
+var dirDes2=$("body > div.container > dir > div > table > tbody > tr:nth-child(5) > td:nth-child(2)").text();
+dirDes2=dirDes2.replace("Dirección:","");
+dirDes2=dirDes2.replace("#","No");
 var ciudadDes=$("body > div.container > dir > div > table > tbody > tr:nth-child(6) > td:nth-child(2)").html();
-//ciudadDes=ciudadDes.replace("Ciudad destino:","");
+var ciudadDes2=$("body > div.container > dir > div > table > tbody > tr:nth-child(6) > td:nth-child(2)").text();
+ciudadDes2=ciudadDes2.replace("Ciudad destino:","");
 var estado=$("body > div.container > dir > div > table > tbody > tr:nth-child(8) > td:nth-child(1) > p").text();
 if(estado=="NOVEDAD" ||estado=="EN NOVEDAD"){
   var display="";
@@ -1709,15 +1712,16 @@ if(estado=="NOVEDAD" ||estado=="EN NOVEDAD"){
   var display='style="display:none"';
 }
 var estado2=$("body > div.container > dir > div > table > tbody > tr:nth-child(8) > td:nth-child(1) > div").html();
+var estado22=$("body > div.container > dir > div > table > tbody > tr:nth-child(8) > td:nth-child(1) > div").text();
 
-//estado2=estado2.replace("AVE ONLINE","HEKA");
-//estado2=estado2.replace("ave online","HEKA");
-//estado2=estado2.replace("AVE","HEKA");
-//estado2=estado2.replace("ave","HEKA");
-//estado2=estado2.replace("AVEONLINE","HEKA");
-//estado2=estado2.replace("aveonline","HEKA");
-//estado2=estado2.replace("ONLINE","HEKA");
-//estado2=estado2.replace("online","HEKA");
+estado22=estado22.replace("AVE ONLINE","HEKA");
+estado22=estado22.replace("ave online","HEKA");
+estado22=estado22.replace("AVE","HEKA");
+estado22=estado22.replace("ave","HEKA");
+estado22=estado22.replace("AVEONLINE","HEKA");
+estado22=estado22.replace("aveonline","HEKA");
+estado22=estado22.replace("ONLINE","HEKA");
+estado22=estado22.replace("online","HEKA");
 const estadoDescripcion=$("body > div.container > dir > div > table > tbody > tr:nth-child(8) > td:nth-child(1) > div > strong:nth-child(3)").html();
 const datosEnvio=$("body > div.container > dir > div > table > tbody > tr:nth-child(10) > td").html();
 
@@ -1822,7 +1826,7 @@ pagina+=`
                                 <tr>
 									<td ${display} colspan="2">
 
-                                        <button  style="width:100%;text-align:center" ; target="_blank" class="btn btn-danger"  >  <i class="fa fa-whatsapp blanco " aria-hidden="true"></i>SOLUCIONAR ENVÍO</button>
+                                        <a href="https://api.whatsapp.com/send?phone=573124638608&text=%C2%A1Hola,%20quiero%20solucionar%20la%20novedad%20de%20mi%20env%C3%ADo!%20%20%20%20%20%20%20%20Remitente: ${" "+nomRem+" "} Guia: ${""+numGuia+""} Destinatario: ${""+nomDes+""} Direccion: ${""+dirDes2+""} Ciudad: ${""+ciudadDes2+""} NOVEDAD: ${""+estado+" "+estado22}"><button  style="width:100%;text-align:center" ; target="_blank" class="btn btn-danger"  >  <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> SOLUCIONAR ENVÍO</button></a>
   
                                     </td>
                                 </tr>
