@@ -1808,7 +1808,7 @@ pagina+=`
                                 
                                 <tr>
 									<td ${display} colspan="2" style="text-align: center;background-color: #dddddd;">
-										SI SU ENVÍO PRESENTA UNA NOVEDAD, ESCRIBA AQUÍ LA SOLUCIÓN PARA REENVIAR, DE LO CONTRARIO LA TRANSPORTADORA NO REENVIARÁ EL PAQUETE
+										SI SU ENVÍO PRESENTA UNA NOVEDAD, CLIC EL BOTÓN "SOLUCIONAR ENVÍO", DE LO CONTRARIO NO SOLUCIONAR EL ENVÍO PROVOCARÁ QUE LA TRANSPORTADORA NO REENVIE EL PAQUETE
 									</td>
                                 </tr>
                                 <tr>
@@ -1822,7 +1822,7 @@ pagina+=`
                                 <tr>
 									<td ${display} colspan="2">
 
-                                        <button  style="width:100%;text-align:center" ; target="_blank" class="btn btn-danger"  >  <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> ENVIAR SOLUCIÓN</button>
+                                        <button  style="width:100%;text-align:center" ; target="_blank" class="btn btn-danger"  >  <i class="fa fa-whatsapp blanco " aria-hidden="true"></i>SOLUCIONAR ENVÍO</button>
   
                                     </td>
                                 </tr>
