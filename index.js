@@ -7,6 +7,8 @@ const request = require("request-promise");
 const cheerio = require("cheerio");
 const puppeteer = require("puppeteer");
 const fs = require("fs");
+const path=require('path');
+const { dir } = require('console');
 const url = "https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c";
 const url2 = "https://www.aveonline.co/principales/servicios.php";
 const url3 = "https://www.aveonline.co/app/modulos/administrador/default.php";
@@ -1074,12 +1076,16 @@ app.post('/estadoGuias', async (req, res) => {
     if(codigoDes==codigo){
     var id = $(element).find("td:nth-child(1)").text();
     var numGuia = $(element).find("th > a:nth-child(2)").text();
+    var transportadora = $(element).find("td:nth-child(13)").text();
+    if(transportadora=="TCC SA"){
+      numGuia=numGuia.replace("000","");
+    }
     var href = $(element).find("th > a:nth-child(2)").attr("href");
     var fecha = $(element).find("td:nth-child(4)").text();
     var destinatario = $(element).find("td:nth-child(10)").text();
     var ciudadRem = $(element).find("td:nth-child(11)").text();
     var ciudadDes = $(element).find("td:nth-child(12)").text();
-    var transportadora = $(element).find("td:nth-child(13)").text();
+    
     var valorEnvio= $(element).find("td:nth-child(20)").text();
     var recaudo= $(element).find("td:nth-child(22)").text();
     var estado= $(element).find("td:nth-child(24)").text();
@@ -1442,6 +1448,547 @@ const html= await request.get("https://aveonline.co/buscarguia.php?guia="+rotulo
    
 
 res.send(pagina);
+});
+
+
+
+
+app.post('/verEstado', async (req,res) =>{
+var numGuia = req.body.paraVerEstado;
+let pagina=`<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   
+    
+   
+
+    <meta name="description" content="Entrega de Sobres, Documentos y Mercancías en Colombia e Internacional para Compras Online Casillero Virtual Gratis Estados Unidos, España y Inglaterra">
+
+    <meta name="keywords" content="Entrega de Sobres,Documentos,Mercancías a nivel Nacional e Internacional,Casillero Virtual Gratuito Estados Unidos,Casillero Virtual Gratuito España,Casillero Virtual Gratuito">
+
+    
+    <title>HEKA</title>
+
+    
+    <meta property="og:type" content="website">
+
+    <meta property="og:url" content="https://veonline.co">
+
+    <meta property="og:image" content="https://aveonline.co/beta/img/logo-1.png">
+
+    <meta property="og:description" content="Entrega de Sobres, Documentos y Mercancías en Colombia e Internacional para Compras Online Casillero Virtual Gratis Estados Unidos, España y Inglaterra">
+
+
+
+    
+
+    
+
+   
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="/public/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.template.css">
+    <link rel="stylesheet" type="text/css" href="css/confirm.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.customized.css">
+    <link rel="stylesheet" type="text/css" href="css/toast.css" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+
+    
+
+
+
+    
+
+    
+
+  
+
+
+  
+
+   
+
+
+
+    <style type="text/css" media="screen">
+        select {
+           background: #ececec url(https://aveonline.co/principales/img/rayita.png) no-repeat 95% center !important;
+       }
+        .btn-label,.btn-label:active{color:#fff;padding:3px 7px;border-radius:15px;border-style:solid;border-width:0}.btn-label{background-color:#a9043a}.btn-label:active{background-color:#d67796}.div-direcciones{position:absolute;background-color:#fff;padding:9px 8px;z-index:1;border-radius:6px;-webkit-box-shadow:0 0 6px 2px rgba(0,0,0,.04);-moz-box-shadow:0 0 6px 2px rgba(0,0,0,.04);box-shadow:0 0 6px 2px rgba(0,0,0,.04)}input.parsley-error,select.parsley-error,textarea.parsley-error{color:#B11C4D;background-color:#fff;border:1px solid #A9043A}.parsley-errors-list{padding:0;list-style-type:none;font-size:1.3em;line-height:.9em;opacity:0;transition:all .3s ease-in;-o-transition:all .3s ease-in;-moz-transition:all .3s ease-in;-webkit-transition:all .3s ease-in;margin:-12px 2px 7px!important}.parsley-errors-list.filled{opacity:1}.parsley-maxlength,.parsley-minlength,.parsley-required,.parsley-type{font-size:14px;color:#a9043a}.bluray{filter:blur(5px)!important}.jconfirm-box,.jconfirm.jconfirm-light .jconfirm-box{-webkit-box-shadow:0 0 0 transparent;-moz-box-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent;border-radius:7px!important}.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons,.jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons{float:initial}.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button,.jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button{width:100%!important}.jconfirm .jconfirm-box{padding:29px 33px 34px!important}.jconfirm-title{color:#a9043a;font-size:17px!important;font-weight:700!important}.jconfirm.jconfirm-light .jconfirm-bg,.jconfirm.jconfirm-white .jconfirm-bg{background-color:rgba(0,0,0,.37)!important;opacity:.5!important}.jconfirm.jconfirm-supervan .jconfirm-bg{background-color:rgba(255,255,255,.65)!important}.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{z-index:3!important;color:#fff!important;cursor:default;background-color:#a9043a!important;border-color:#a9043a!important}.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143!important;color:#a9043a;text-decoration:none;background-color:#fff!important;border:1px solid #ddd!important}.box-coment{padding-top:0;background-color:#f4f4f4;color:#f4f4f4;border-radius:6px;height:150px}#caja-direccion:focus{box-shadow:0 0 12px 4px rgba(0,0,0,.09);outline:0}
+    </style>
+</head>
+<style type="text/css" media="screen">
+    .panel-asistencia{
+height: 65px;
+    width: 100%;
+    z-index: 8989;
+    position: absolute;
+    color: #8c8c8c;
+    font-weight: 200;
+    padding: 5px;
+    background-color: #f5f5f5;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding-top: 7px;
+    }
+    .dircas{
+        display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #verdir1{
+            display: none !important;
+        }
+        .dircas{
+            padding: 12px;
+            text-align: center;
+            background-color: #a9043a;
+            color: white;
+            margin-top: 57px;
+            display: block;
+        }
+        .panel-asistencia {
+            font-size: 1.2em;
+            height: 240px;
+            position: static;
+            padding: 31px;
+            text-align: left !important;
+            margin-top: -10px;
+        }
+        .logo-principal{
+            text-align: center !important;
+            /*padding-left: 61px;*/
+            width: 75% !important;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .panel-login{
+            text-align: center;
+            background-color: white !important;
+            position: absolute;
+            display: block;
+            width: 100%
+            border-radius:0px;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #info-usuario{
+            display: none !important;
+        }
+        .titulo-lv-1 {
+           font-size: 1.6em !important;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .panel-asistencia {
+            font-size: 1.2em;
+            height: 210px;
+            position: static;
+            padding: 44px 80px 23px 25px;
+            text-align: left !important;
+        }
+        .logo-principal{
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .panel-login{
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto|
+            /*margin-left: 260px !important;*/
+            /*border-radius: 0px;*/
+        }
+         #info-usuario{
+            display: none !important;
+        }
+    }
+
+
+</style>
+
+    <div class="option animated pulse panel-asistencia">
+
+        <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> Para más información:<a onclick="ga('send', 'event', 'button', 'call', 'right-top');" href="https://api.whatsapp.com/send?phone=573124638608"> 312 463 86 08</a>
+<br>
+
+    </div>
+
+
+
+
+
+
+<style>
+
+  .panel-list-direcciones{
+    background-color: white;
+    position: fixed;
+    display: none;
+    width: 365px !important;
+    /* height: 435px !important; */
+    /* height: 398px; */
+    border-radius: 2px;
+    margin-left: 2px;
+    margin-top: 77px;
+    padding-left: 14px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 6px 2px;
+    z-index: 9999 !important;
+  }
+
+
+
+  @media only screen and (max-width: 600px) {
+
+    .panel-list-direcciones{
+
+      margin: auto;
+
+      width: 100%;
+
+      position: absolute;
+
+      border: 3px solid #fff;
+
+      padding: 10px;
+
+    }
+
+  }
+
+</style>`;
+const html=await request.get('https://aveonline.co/buscarguia.php?guia='+numGuia);
+const $= cheerio.load(html);
+var numeroGuia=$("body > div.container > dir > div > div > h3").text();
+
+var fechaEnvio=$("body > div.container > dir > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > p").text();
+var transportadora=$("body > div.container > dir > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > p").html();
+
+var nomRem=$("body > div.container > dir > div > table > tbody > tr:nth-child(4) > td:nth-child(1)").text();
+nomRem=nomRem.replace("Nombre:","");
+nomRem=nomRem.replace("AVE -","");
+var dirRem=$("body > div.container > dir > div > table > tbody > tr:nth-child(5) > td:nth-child(1)").html();
+//dirRem=dirRem.replace("Dirección:","");
+var ciudadRem=$("body > div.container > dir > div > table > tbody > tr:nth-child(6) > td:nth-child(1)").html();
+//ciudadRem=ciudadRem.replace("Ciudad origen:","");
+var nomDes=$("body > div.container > dir > div > table > tbody > tr:nth-child(4) > td:nth-child(2)").text();
+nomDes=nomDes.replace("Nombre:","");
+nomDes=nomDes.replace("AVE","");
+var dirDes=$("body > div.container > dir > div > table > tbody > tr:nth-child(5) > td:nth-child(2)").html();
+//dirDes=dirDes.replace("Dirección:","");
+var ciudadDes=$("body > div.container > dir > div > table > tbody > tr:nth-child(6) > td:nth-child(2)").html();
+//ciudadDes=ciudadDes.replace("Ciudad destino:","");
+var estado=$("body > div.container > dir > div > table > tbody > tr:nth-child(8) > td:nth-child(1) > p").text();
+if(estado=="NOVEDAD" ||estado=="EN NOVEDAD"){
+  var display="";
+}else{
+  var display='style="display:none"';
+}
+var estado2=$("body > div.container > dir > div > table > tbody > tr:nth-child(8) > td:nth-child(1) > div").html();
+
+//estado2=estado2.replace("AVE ONLINE","HEKA");
+//estado2=estado2.replace("ave online","HEKA");
+//estado2=estado2.replace("AVE","HEKA");
+//estado2=estado2.replace("ave","HEKA");
+//estado2=estado2.replace("AVEONLINE","HEKA");
+//estado2=estado2.replace("aveonline","HEKA");
+//estado2=estado2.replace("ONLINE","HEKA");
+//estado2=estado2.replace("online","HEKA");
+const estadoDescripcion=$("body > div.container > dir > div > table > tbody > tr:nth-child(8) > td:nth-child(1) > div > strong:nth-child(3)").html();
+const datosEnvio=$("body > div.container > dir > div > table > tbody > tr:nth-child(10) > td").html();
+
+
+
+
+pagina+=`
+<body style="background-color: #fff">
+	<br><br><br><br>
+
+	<div class="container" style="padding: 0px;margin: 0px;">
+		<dir class="row" style="padding: 0px;margin: 0px;">
+			<div class="col-xs-12 col-md-offset-3 col-md-6 col-md-offset-3">
+											<span style="border: 12px;border-style: solid;border-color: #ffed94;background-color: #ffed94;border-radius: 8px;">
+							<strong>Servicio de recaudo</strong>
+						</span>
+						<br>
+						<br>
+																<div class="secundario-div">
+							<h3 style="margin-top: 0px !important;">${numeroGuia} <img src="" style="width: 71px;" alt=""></h3>
+
+						</div>
+						<table class="table" style="width: 100%">
+							<tbody>
+								<tr>
+									<td>
+                    <p>
+                    
+                    <i class="fa fa-calendar" aria-hidden="true">
+                    
+                    </i>
+                    <strong> Fecha de envío </strong>
+                    ${fechaEnvio}
+                    </p>
+									</td>
+									<td>
+										${transportadora}
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" style="text-align: center;background-color: #dddddd;">
+										DATOS REMITENTE Y DESTINO
+									</td>
+								</tr>
+								<tr>
+									<td><strong><i class="fa fa-user" aria-hidden="true"></i> Datos remitente</strong></td>
+									<td><strong><i class="fa fa-user-o" aria-hidden="true"></i> Datos destinatario</strong></td>
+								</tr>
+								<tr>
+									<td><strong>Nombre:</strong> ${nomRem}</td>
+									<td><strong>Nombre:</strong> ${nomDes}</td>
+								</tr>
+								<tr>
+									<td>${dirRem}</td>
+									<td>${dirDes}</td>
+								</tr>
+								<tr>
+									<td>${ciudadRem}</td>
+									<td>${ciudadDes}</td>
+								</tr>
+								<tr>
+									<td colspan="2" style="text-align: center;background-color: #dddddd;">
+										ESTADO
+									</td>
+								</tr>
+								<tr>
+									<td>
+                   
+                  <strong>Estado:</strong>
+										<p style="font-size: 29px !important">${estado}</p>
+                                      </td> 
+
+                                      <td>
+                                      ${estado2}
+                                      </td>
+								</tr>
+								<tr>
+									<td colspan="2" style="text-align: center;background-color: #dddddd;">
+										DATOS DEL ENVIO
+									</td>
+								</tr>
+                <tr>
+                <td>
+                  ${datosEnvio}
+                  </td>
+								</tr>
+								
+                                
+                                <tr>
+									<td ${display} colspan="2" style="text-align: center;background-color: #dddddd;">
+										SI SU ENVÍO PRESENTA UNA NOVEDAD, ESCRIBA AQUÍ LA SOLUCIÓN PARA REENVIAR, DE LO CONTRARIO LA TRANSPORTADORA NO REENVIARÁ EL PAQUETE
+									</td>
+                                </tr>
+                                <tr>
+                                    
+                                        <td ${display} colspan="2" style="text-align: center;background-color: #dddddd;">
+                                           <input  class="form-control" width="1000px" height="1000px" type="text">
+                                        </td>
+                                       
+                                    
+
+                                </tr>
+                                
+                                <tr>
+									<td ${display} colspan="2">
+
+                                        <button  style="width:100%;text-align:center" ; target="_blank" class="btn btn-danger"  >  <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> ENVIAR SOLUCIÓN</button>
+  
+                                    </td>
+                                </tr>
+							</tbody>
+						</table>
+								</div><!--col-->
+		</dir><!--row-->
+	</div><!--container-->
+
+
+</body>
+`;
+
+pagina+=` <footer style="background-color: #fff;">
+    
+</footer>
+
+
+
+    <!-- jquery -->
+
+ <script src="https://code.jquery.com/jquery.js"></script>
+
+ 
+ <!-- script -->
+
+ <script src="principales/js/script.js"></script>
+
+ 
+ <!-- toastr -->
+
+ <script src="principales/js/toastr.js"></script>
+
+ <!-- cryto -->
+
+ <script src="principales/js/crypto.js"></script>
+
+ <!-- md5 -->
+
+ <script src="principales/js/md5.js"></script>
+
+ <!-- parsley -->
+
+ <script src="principales/js/parsley.js" type="text/javascript"></script>
+
+ <!-- bootstrap -->
+
+ <script src="principales/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+ <!-- confirmjs -->
+
+ <script src="principales/js/confirm.js" type="text/javascript" ></script>
+
+ <!-- carousel -->
+
+ <script src="principales/owl-carousel/owl.carousel.js"></script>
+
+ <!-- list js -->
+
+ <script src="principales/js/listjs.js"></script>
+
+
+
+ <script src="principales/js/clipboard.js"></script>
+
+
+
+ <script src="principales/js/funciones_principales.js" async></script>
+
+
+
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+
+
+
+ <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+
+
+
+ <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+</html>`;
+pagina=pagina.replace("AVE ONLINE","HEKA");
+pagina=pagina.replace("ave online","HEKA");
+pagina=pagina.replace("AVE","HEKA");
+pagina=pagina.replace("ave","HEKA");
+pagina=pagina.replace("ONLINE","HEKA");
+pagina=pagina.replace("online","HEKA");
+fs.writeFileSync("public/verEstado.html",pagina);
+
+
+
+res.sendFile(path.resolve(__dirname,'public/verEstado.html'));
+
+
+
+});
+
+
+
+
+
+
+
+
+
+app.get('/relacionEnvia', async (req,res) =>{
+  const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
+
+    form: {
+      token: "25b3600e68aa847a6cd9dd5601a73f1c",
+      user: "hernandoram1998@gmai",
+      password: "1072497419"
+
+    },
+    simple: false,
+    followAllRedirects: true,
+    jar: true
+
+  });
+
+  const html2 = await request.post("https://www.aveonline.co/principales/servicios.php", {
+
+    form: {
+
+      usuario: "hernandoram1998@gmai",
+      clave: "1072497419"
+
+    },
+    simple: false,
+    followAllRedirects: true,
+    jar: true
+
+  });
+const html =await  request.post('https://www.aveonline.co/app/modulos/relacion_envios/relacion_envios.php',{
+  form: {
+
+    idagente: "2422",
+idtransportadorx: "29",
+dsfechai: "2020/06/16",
+dsfechaf: "2020/06/16",
+enviarbuscar: "Listar"
+
+  },
+  simple: false,
+  followAllRedirects: true,
+  jar: true
+});
+fs.writeFileSync("relacion.html",html);
+const $ = cheerio.load(html);
+const dato=$('body > form > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(2)').text();
+
+
+res.send("envio"+dato);
 });
 
 var server = app.listen(port, () => {
