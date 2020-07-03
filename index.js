@@ -9,6 +9,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path=require('path');
 const { dir } = require('console');
+const { json } = require('express');
 const url = "https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c";
 const url2 = "https://www.aveonline.co/principales/servicios.php";
 const url3 = "https://www.aveonline.co/app/modulos/administrador/default.php";
@@ -975,8 +976,12 @@ app.post('/estadoGuias', async (req, res) => {
   if(nombre=="Daniel Benitez"){
     var codigo="0015";
   }
+  if(nombre=="Katherine Torres"){
+    var codigo="0016";
+  }
   var opcion=req.body.opcion;
   let pagina = '<!doctype html><html><head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head><body>';
+  
   var numGuia;
   var href;
 
@@ -1002,6 +1007,7 @@ app.post('/estadoGuias', async (req, res) => {
   </thead>
   <tbody>
   `;
+  
   const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
 
     form: {
@@ -1070,7 +1076,7 @@ app.post('/estadoGuias', async (req, res) => {
     codigoDes=codigoDes.replace(" ","");
     codigoDes=parseInt(codigoDes);
     codigo=parseInt(codigo);
-    pagina+=`<a>${codigoDes}</a>`;
+    
     
    
     if(codigoDes==codigo){
@@ -1125,6 +1131,7 @@ app.post('/estadoGuias', async (req, res) => {
     </form>
 
     `;
+  
   }
 
   });
@@ -1946,6 +1953,35 @@ res.sendFile(path.resolve(__dirname,'public/verEstado.html'));
 
 
 app.get('/relacionEnvia', async (req,res) =>{
+
+
+let paraCrear=`  {"method": "POST","uri": "https://www.aveonline.co/app/modulos/relacion_envios/relacion_envios.php","form": { "exportarx" : "1", "dsobs": "","aviso": "1",`;
+  //var paraCrear="";
+  let pagina = '<!doctype html><html><head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head><body>';
+  pagina += `<table class="table table-dark">
+
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre Remitente</th>
+      <th scope="col">Ciudad Remitente</th>
+      <th scope="col">Nombre Destinatario</th>
+      <th scope="col">Ciudad Destino</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Dirección</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Cajas</th>
+      <th scope="col">Peso</th>
+      <th scope="col">Valor Declarado</th>
+      <th scope="col">Valor recaudo</th>
+      <th scope="col">Observaciones</th>
+      <th scope="col">Guia</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  `;
+  
   const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
 
     form: {
@@ -1976,10 +2012,10 @@ app.get('/relacionEnvia', async (req,res) =>{
 const html =await  request.post('https://www.aveonline.co/app/modulos/relacion_envios/relacion_envios.php',{
   form: {
 
-    idagente: "2422",
+    idagente: "3161",
 idtransportadorx: "29",
-dsfechai: "2020/06/16",
-dsfechaf: "2020/06/16",
+dsfechai: "2020/06/19",
+dsfechaf: "2021/06/19",
 enviarbuscar: "Listar"
 
   },
@@ -1989,11 +2025,236 @@ enviarbuscar: "Listar"
 });
 fs.writeFileSync("relacion.html",html);
 const $ = cheerio.load(html);
-const dato=$('body > form > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(2)').text();
+var prueba="";
+
+$("body > form > table > tbody > tr  ").each((index, element) => {
+  
+  var pkid=$(element).find("td:nth-child(1) > input[type=checkbox]:nth-child(1)").attr("value");
+  if(pkid===undefined || pkid=="on"){
+    pkid="";  }
+    paraCrear+='\"pkid[]" :"'+pkid+'",';
+    //if(paraCrear=='pkid[]:"",'){
+     // paraCrear="";
+    //}
+  var idexpx=$(element).find("td:nth-child(1) > input[type=hidden]:nth-child(2)").attr("value");
+  if(idexpx===undefined || idexpx=="on"){
+    idexpx="";
+  }
+  paraCrear+='"idexpx[]" :"'+idexpx+'",';
+  
+  paraCrear=paraCrear.replace('"pkid[]" :"","idexpx[]" :"",','');
+  var rem=$(element).find(" .text1 > td:nth-child(2)").text();
+  rem=rem.replace("AVE -","");
+  var ciudadRem=$(element).find(" .text1 > td:nth-child(3)").text();
+  var des=$(element).find(" .text1 > td:nth-child(4)").text();
+  var ciudadDes=$(element).find(" .text1 > td:nth-child(5)").text();
+  var fecha=$(element).find(" .text1 > td:nth-child(6)").text();
+  var dirDes=$(element).find(" .text1 > td:nth-child(7)").text();
+  var telDes=$(element).find(" .text1 > td:nth-child(8)").text();
+  var cajas=$(element).find(" .text1 > td:nth-child(9)").text();
+  var peso=$(element).find(" .text1 > td:nth-child(10)").text();
+  var valorMerca=$(element).find(" .text1 > td:nth-child(13)").text();
+  var recaudo=$(element).find(" .text1 > td:nth-child(14)").text();
+  var observaciones=$(element).find(" .text1 > td:nth-child(15)").text();
+  var guia=$(element).find(" .text1 > td:nth-child(16)").text();
+  //body > form > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(1) > input[type=checkbox]:nth-child(1)
+  //prueba+=rem+ciudadRem+des+ciudadDes+fecha+dirDes+telDes+cajas+peso+valorMerca+recaudo+observaciones+guia;
+
+ 
+
+  pagina += ` <tr>
+  <th scope="row"></th>
+  <td><a href="#" >${rem}</a></td>
+  <td>${ciudadRem}</td>
+  <td>${des}</td>
+  <td>${ciudadDes}</td>
+  <td>${fecha}</td>
+  <td>${dirDes}</td>
+  <td>${telDes}</td>
+ 
+  <td>${cajas}</td>
+  
+  <td>${peso}</td>
+  <td>${valorMerca}</td>
+  <td>${recaudo}</td>
+  <td>${observaciones}</td>
+  <td>${guia}</td>
+  
+  <form action="crearRelacionEnvia" method="post">
+  <input type="hidden" name="paraGuia" value="${paraCrear}">
+  <td><button class="btn btn-danger" type="submit">Ver relacion</button></td>
+  </form>
+  
+<!--
+  <form action="documentoRotulo" method="post">
+  <input type="hidden" name="paraRotulo" value="">
+  <input type="hidden" name="transportadora" value="">
+  <input type="hidden" name="fecha" value="">
+  <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
+  </form>
+
+  <form action="verEstado" method="post">
+  <input type="hidden" name="paraVerEstado" value="">
+  <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
+  </form>
+  -->
+
+  </tr></tbody>`;
 
 
-res.send("envio"+dato);
+
 });
+paraCrear+='"idtransportadorx": "29","exportarx": "1","aviso": "1","enca": "" },"simple": "false","followAllRedirects": "true","jar": "true"}';
+var dato=JSON.parse(paraCrear);
+
+//paraCrear+="'idtransportadorx': '29','exportarx': '1','aviso': '1','enca': '' },'simple': 'false','followAllRedirects': 'true','jar': 'true'}";var probar=JSON.stringify(paraCrear);
+
+pagina+=`<tr><tbody> <!-- <form action="crearRelacionEnvia" method="post"> -->
+<input type="hidden" name="paraCrearRelacion" value="${paraCrear}" onclick="crearRelacionEnvioEnvia(${dato});">
+<td align="center"><button class="btn btn-danger" type="submit">enviar</button></td> <!-- </form> --> </tr></tbody></body>
+</html>`;
+
+request(dato)
+    .then(function (body) {
+        // POST succeeded...
+        res.send(pagina);
+    })
+    .catch(function (err) {
+        // POST failed...
+        res.send("error al crear relación de envío");
+    });
+
+
+
+
+});
+
+
+
+app.get('/crearRelacionEnvia', async(req,res) =>{
+let pagina=`<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario</title>
+
+
+
+   
+ 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head><body>`;
+
+const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
+
+  form: {
+    token: "25b3600e68aa847a6cd9dd5601a73f1c",
+    user: "hernandoram1998@gmai",
+    password: "1072497419"
+
+  },
+  simple: false,
+  followAllRedirects: true,
+  jar: true
+
+});
+
+const html2 = await request.post("https://www.aveonline.co/principales/servicios.php", {
+
+  form: {
+
+    usuario: "hernandoram1998@gmai",
+    clave: "1072497419"
+
+  },
+  simple: false,
+  followAllRedirects: true,
+  jar: true
+
+});
+
+/*  
+const html = await request.post('https://www.aveonline.co/app/modulos/relacion_envios/relacion_envio_exportar.php',{
+    form: {
+      dsfechai: "2020/06/16",
+      dsfechaf: "2021/06/22",
+      paramguia: "024016082314",
+      enviar: "Buscar",
+      enca: "",
+      aveila: ""
+    },
+    "simple": "false",
+    "followAllRedirects": "true",
+    "jar": "true"
+  });
+    
+  const $=cheerio.load(html);  
+  var boton=$("body > form > table > tbody > tr.text1 > td:nth-child(7) > a:nth-child(1)").attr("href");
+  boton=boton.replace("javascript:irImprimir('","");
+  boton=boton.replace("','','');","");
+ */ 
+  const html3= await request.post('https://aveonline.co/app/modulos/paqueteo/impresiones.masivas.php?rotulox=1&imprimir=1',{
+    form: {
+      "pkidxselr[]":"868781",
+      "idremision_wcw[]": "868781",
+      "idservicio[]": "29",
+      "idremision_tcc[]": "",
+      "pkidr[]":"868781",
+      "pkid":"868781",
+
+      //"pkidxselr[1]":"868844",
+      //"idremision_wcw[1]": "868844",
+      //"idservicio[1]": "29",
+      //"idremision_tcc[1]": "",
+      //"pkidr[1]":"868844",
+      //"pkid":"868844",
+
+      
+
+      "tipoguia": ""
+
+
+    },
+    
+    "simple": "false",
+    "followAllRedirects": "true",
+    "jar": "true"
+  });
+
+
+
+  
+  pagina+=`<a href="https://aveonline.co/app/modulos/paqueteo/impresiones.masivas.php?rotulox=1&imprimir=1"><button  class="btn btn-danger" >Abrir relacion</button></a>`;
+  pagina+=`</body>
+  </html>`;
+
+  res.send(html3);
+});
+
+
+
+
+
+
+app.get('/prueba',async (req,res)=> {
+
+  const html = await request.get('https://www.aveonline.co/app/modulos/relacion_envios/imprimir.php?dsconsec=&idagente=&idexp=11635&codagente=&idcliente=&idremitente=&idempresa=&idproveedoroc=11635&dscofigo=116352920200619212657&id=662219');
+
+  fs.writeFileSync("hhh.html",html);
+
+  res.send("envio");
+
+});
+
+
+
+
+
+
+
+
 
 var server = app.listen(port, () => {
   console.log('Servidor web iniciado');
