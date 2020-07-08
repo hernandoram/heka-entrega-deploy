@@ -1833,7 +1833,7 @@ pagina+=`
                                 <tr>
 									<td ${display} colspan="2">
 
-                                        <a href="https://api.whatsapp.com/send?phone=573124638608&text=%C2%A1Hola,%20quiero%20solucionar%20la%20novedad%20de%20mi%20env%C3%ADo!%20%20%20%20%20%20%20%20Remitente: ${" "+nomRem+" "} Guia: ${""+numGuia+""} Destinatario: ${""+nomDes+""} Direccion: ${""+dirDes2+""} Ciudad: ${""+ciudadDes2+""} NOVEDAD: ${""+estado+" "+estado22}"><button  style="width:100%;text-align:center" ; target="_blank" class="btn btn-danger"  >  <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> SOLUCIONAR ENVÍO</button></a>
+                                        <a href="https://api.whatsapp.com/send?phone=573213359385&text=%C2%A1Hola,%20quiero%20solucionar%20la%20novedad%20de%20mi%20env%C3%ADo!%20%20%20%20%20%20%20%20Remitente: ${" "+nomRem+" "} Guia: ${""+numGuia+""} Destinatario: ${""+nomDes+""} Direccion: ${""+dirDes2+""} Ciudad: ${""+ciudadDes2+""} NOVEDAD: ${""+estado+" "+estado22}"><button  style="width:100%;text-align:center" ; target="_blank" class="btn btn-danger"  >  <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> SOLUCIONAR ENVÍO</button></a>
   
                                     </td>
                                 </tr>
