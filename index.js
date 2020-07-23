@@ -979,6 +979,12 @@ app.post('/estadoGuias', async (req, res) => {
   if(nombre=="Katherine Torres"){
     var codigo="0016";
   }
+  if(nombre=="Jose Luis"){
+    var codigo="0017";
+  }
+  if(nombre=="Veronica Andrea Lobo"){
+    var codigo="0018";
+  }
   var opcion=req.body.opcion;
   let pagina = '<!doctype html><html><head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head><body>';
   
