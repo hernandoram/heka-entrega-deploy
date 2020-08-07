@@ -180,14 +180,8 @@ app.post('/mostrarnumeros', async (req, res) => {
     }
     var tiempoenvia = $("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(3)").text();
     tiempoenvia = tiempoenvia.replace("d", "");
-    tiempoenvia = tiempoenvia.replace("AVEONLINE","HEKA");
-    tiempoenvia = tiempoenvia.replace("aveonline","HEKA");
-    tiempoenvia = tiempoenvia.replace("AVE ONLINE","HEKA");
-    tiempoenvia = tiempoenvia.replace("ave online","HEKA");
-    tiempoenvia = tiempoenvia.replace("AVE","HEKA");
-    tiempoenvia = tiempoenvia.replace("ONLINE","HEKA");
-    tiempoenvia = tiempoenvia.replace("ave","HEKA");
-    tiempoenvia = tiempoenvia.replace("online","HEKA");
+    tiempoenvia = tiempoenvia.replace(/[a-z|()]/gi, '');
+    
     pagina += `
     
     
@@ -329,7 +323,14 @@ app.post('/mostrarnumeros', async (req, res) => {
     console.error(error);
   }
 
-
+  pagina = pagina.replace("AVEONLINE","HEKA");
+  pagina = pagina.replace("aveonline","HEKA");
+  pagina = pagina.replace("AVE ONLINE","HEKA");
+  pagina = pagina.replace("ave online","HEKA");
+  pagina = pagina.replace("AVE","HEKA");
+  pagina = pagina.replace("ONLINE","HEKA");
+  pagina = pagina.replace("ave","HEKA");
+  pagina = pagina.replace("online","HEKA");
   res.send(pagina);
 
 
