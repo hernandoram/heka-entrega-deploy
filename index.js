@@ -180,6 +180,14 @@ app.post('/mostrarnumeros', async (req, res) => {
     }
     var tiempoenvia = $("#div2 > div.card.card-default > div > div > div > table.table.table-striped > tbody > tr:nth-child(5) > td:nth-child(3)").text();
     tiempoenvia = tiempoenvia.replace("d", "");
+    tiempoenvia = tiempoenvia.replace("AVEONLINE","HEKA");
+    tiempoenvia = tiempoenvia.replace("aveonline","HEKA");
+    tiempoenvia = tiempoenvia.replace("AVE ONLINE","HEKA");
+    tiempoenvia = tiempoenvia.replace("ave online","HEKA");
+    tiempoenvia = tiempoenvia.replace("AVE","HEKA");
+    tiempoenvia = tiempoenvia.replace("ONLINE","HEKA");
+    tiempoenvia = tiempoenvia.replace("ave","HEKA");
+    tiempoenvia = tiempoenvia.replace("online","HEKA");
     pagina += `
     
     
@@ -985,6 +993,11 @@ app.post('/estadoGuias', async (req, res) => {
   if(nombre=="Veronica Andrea Lobo"){
     var codigo="0018";
   }
+
+  if(nombre=="Ruben Peñaranda"){
+    var codigo="0019";
+  }
+
   var opcion=req.body.opcion;
   let pagina = '<!doctype html><html><head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head><body>';
   
