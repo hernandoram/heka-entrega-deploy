@@ -1660,7 +1660,7 @@ height: 65px;
 
     <div class="option animated pulse panel-asistencia">
 
-        <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> Para más información:<a onclick="ga('send', 'event', 'button', 'call', 'right-top');" href="https://api.whatsapp.com/send?phone=573124638608"> 312 463 86 08</a>
+        <i class="fa fa-whatsapp blanco " aria-hidden="true"></i> Para más información:<a onclick="ga('send', 'event', 'button', 'call', 'right-top');" href="https://api.whatsapp.com/send?phone=573213359385"> 321 335 93 85</a>
 <br>
 
     </div>
