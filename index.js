@@ -19484,7 +19484,7 @@ app.post('/listarGuiaEnvia', async (req, res) => {
      <div class="form-group row">
        <div class="col-sm-6 mb-3 mb-sm-0">
          <input type="text" name="nomRem" value="${nombreFirebase}" class="form-control form-control-user" id="exampleInputPassword"
-           placeholder="Nombre"vrequired>
+           placeholder="Nombre" required>
        </div>
 
        <div class="col-sm-6 mb-3 mb-sm-0">
@@ -19540,7 +19540,7 @@ app.post('/listarGuiaEnvia', async (req, res) => {
      <div class="form-group row">
        <div class="col-sm-6 mb-3 mb-sm-0">
          <input type="text" name="observacionesAdicionales" class="form-control form-control-user" id="exampleInputPassword"
-           placeholder="Observaciones adicionales" required>
+           placeholder="Observaciones adicionales" >
        </div>
 
 
@@ -19742,7 +19742,7 @@ app.post('/listarGuiaTcc', async (req, res) => {
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input readonly="readonly" value="${ciudadR}" name="ciudadRLetra" type="text"
-            class="form-control form-control-user" id="exampleFirstName" placeholder="Ciudad remitente">
+            class="form-control form-control-user" id="exampleFirstName" placeholder="Ciudad remitente" >
           <input value="${codigoR}" type="hidden" class="form-control" name="ciudadRNumero" required>
           <input value="${codigoD}" type="hidden" class="form-control" name="ciudadDNumero" required>
 
@@ -19783,7 +19783,7 @@ app.post('/listarGuiaTcc', async (req, res) => {
         </div>
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="contenido" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Contenido">
+            placeholder="Contenido" required>
         </div>
 
 
@@ -19795,24 +19795,24 @@ app.post('/listarGuiaTcc', async (req, res) => {
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="nomRem" value="${nombreFirebase}" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Nombre">
+            placeholder="Nombre" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="dirRem" value="${direccionFirebase}" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Dirección - conjunto - apartamento">
+            placeholder="Dirección - conjunto - apartamento" required>
         </div>
 
       </div>
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="barrioRem" value="${barrioFirebase}" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Barrio">
+            placeholder="Barrio" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="number" name="celRem"  value="${celularFirebase}" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Celular">
+            placeholder="Celular" required>
         </div>
 
 
@@ -19824,24 +19824,24 @@ app.post('/listarGuiaTcc', async (req, res) => {
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="nomDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Nombre">
+            placeholder="Nombre" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="dirDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Dirección - conjunto - apartamento">
+            placeholder="Dirección - conjunto - apartamento" required>
         </div>
 
       </div>
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="barrioDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Barrio">
+            placeholder="Barrio" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="number" name="celDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Celular">
+            placeholder="Celular" required>
         </div>
 
 
