@@ -18794,10 +18794,10 @@ app.get('/cotizarEnvio',async (req,res) =>{
        </div>`;
        
         pagina+=paginaFinal; 
-        fs.writeFileSync("public/plantilla/index.html", pagina);
+        fs.writeFileSync("public/plantilla/cotizar.html", pagina);
       
       
-        res.sendFile(path.resolve(__dirname, 'public/plantilla/index.html'));
+        res.sendFile(path.resolve(__dirname, 'public/plantilla/cotizar.html'));
      });
     
 
@@ -18810,7 +18810,7 @@ app.get('/cotizarEnvio',async (req,res) =>{
     } else {
       // User is signed out.
       // ...
-      res.redirect('/login.html');
+      res.redirect('/index.html');
     
     }
   });
