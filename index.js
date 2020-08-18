@@ -51,7 +51,7 @@ let paginaInicio = `<!DOCTYPE html>
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
   
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="cotizar.html">
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
           </div>
@@ -63,7 +63,7 @@ let paginaInicio = `<!DOCTYPE html>
   
         <!-- Nav Item - Cotizar envio -->
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="cotizar.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Cotizar envío</span></a>
         </li>
@@ -187,7 +187,7 @@ let paginaInicio = `<!DOCTYPE html>
                     Activity Log
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <a class="dropdown-item" href="index.html" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                   </a>
