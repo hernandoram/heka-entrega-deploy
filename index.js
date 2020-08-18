@@ -17,7 +17,7 @@ const url = "https://www.aveonline.co/principales/servicios/validate_login.php?t
 const url2 = "https://www.aveonline.co/principales/servicios.php";
 const url3 = "https://www.aveonline.co/app/modulos/administrador/default.php";
 
-app.use(express.static(__dirname + '/public/plantilla'));
+app.use(express.static(__dirname + '/public'));
 //
 app.use(bodyParser.urlencoded({ extended: false }));
 let paginaInicio = `<!DOCTYPE html>
