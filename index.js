@@ -20192,7 +20192,7 @@ app.post('/crearguiaEnvia', async (req, res) => {
      </html>
        `;
      
-       res.send(html);
+       res.redirect('estadoGuiasCreadas');
       
       
       
@@ -20215,7 +20215,7 @@ app.post('/crearguiaEnvia', async (req, res) => {
     } else {
       // User is signed out.
       // ...
-      sesionIniciada="finalizada";
+      res.redirect('/index.html');
     
     }
   });
@@ -20429,7 +20429,7 @@ app.post('/crearguiaTCC', async (req, res) => {
   `;
 
 
-  res.send("envio");
+  res.redirect('/estadoGuiasCreadas');
       });
       
       var displayName = user.displayName;
@@ -20447,7 +20447,7 @@ app.post('/crearguiaTCC', async (req, res) => {
     } else {
       // User is signed out.
       // ...
-      sesionIniciada="finalizada";
+      res.redirect('/index.html');
     
     }
   });
@@ -20777,7 +20777,7 @@ app.get('/estadoGuiasCreadas', async (req, res) => {
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; HEKA ENTREGA 2020</span>
           </div>
         </div>
       </footer>
@@ -21208,7 +21208,7 @@ app.get('/estadoGuiasEnProceso', async (req, res) => {
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; HEKA ENTREGA 2020</span>
           </div>
         </div>
       </footer>
@@ -21639,7 +21639,7 @@ app.get('/estadoGuiasEntregadas', async (req, res) => {
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; HEKA ENTREGA 2020</span>
           </div>
         </div>
       </footer>
