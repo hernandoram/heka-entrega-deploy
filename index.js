@@ -13,6 +13,7 @@ const fs = require("fs");
 const path = require('path');
 const { dir } = require('console');
 const { json } = require('express');
+const { parse } = require('path');
 const url = "https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c";
 const url2 = "https://www.aveonline.co/principales/servicios.php";
 const url3 = "https://www.aveonline.co/app/modulos/administrador/default.php";
@@ -20041,11 +20042,15 @@ app.post('/crearguiaEnvia', async (req, res) => {
        var barrioDes = req.body.barrioDes;
        var dirDes = req.body.dirDes + " " + barrioDes;
        var tiempoenvia = req.body.tiempoEnvia;
-       var seguroEnvia = req.body.seguroEnvia;
+       var seguroEnvia = parseInt(req.body.seguroEnvia);
+       
        var comisionRecaudoEnvia = req.body.comisionRecaudoEnvia;
-       var envioEnvia = req.body.envioEnvia;
+       var envioEnvia = parseInt(req.body.envioEnvia);
+      
        var trayectoenvia = req.body.trayectoenvia;
        var observacionesAdicionales = req.body.observacionesAdicionales;
+
+       var envioTotal=envioEnvia+seguroEnvia;
      
        //res.send(ciudadR+""+codigoR+""+""+ciudadD+""+codigoD+kilos+unidades+seguro+recaudo+contenido+nomRem+celRem+dirRem+nomDes+celDes+dirDes+tiempoenvia+seguroEnvia+comisionRecaudoEnvia+envioEnvia+trayectoenvia);
      
@@ -20061,7 +20066,7 @@ app.post('/crearguiaEnvia', async (req, res) => {
      
        var calculo = (0.03 * 0.03 * 0.03) * dsfactor;
      
-     
+       
        const rpta = request.post("https://www.aveonline.co/app/modulos/coretransporte/guardar.guia.php?mensajeg=1", {
          form: {
      
@@ -20122,7 +20127,7 @@ app.post('/crearguiaEnvia', async (req, res) => {
            dscom: observacionesAdicionales,
            idvalor_tranporte: envioEnvia,
            idporvaloracion: seguroEnvia,
-           idvalortotalguia: envioEnvia + seguroEnvia,
+           idvalortotalguia: envioTotal,
            //dsconsec: 
            dsfactor: dsfactor + "",
            kilosvol: kilos + "",
@@ -20157,6 +20162,8 @@ app.post('/crearguiaEnvia', async (req, res) => {
      
      
        });
+
+       
      
        var html = `<!DOCTYPE html>
        <html>
@@ -20197,8 +20204,9 @@ app.post('/crearguiaEnvia', async (req, res) => {
        </body>
      </html>
        `;
-     
-       res.redirect('estadoGuiasCreadas');
+       
+       res.redirect('/cotizarEnvio');
+       
       
       
       
@@ -20276,11 +20284,12 @@ app.post('/crearguiaTCC', async (req, res) => {
   var barrioDes = req.body.barrioDes;
   var dirDes = req.body.dirDes +" "+ barrioDes;
   var tiempoenvia = req.body.tiempoEnvia;
-  var seguroEnvia = req.body.seguroEnvia;
+  var seguroEnvia = parseInt(req.body.seguroEnvia);
   var comisionRecaudoEnvia = req.body.comisionRecaudoEnvia;
-  var envioEnvia = req.body.envioEnvia;
+  var envioEnvia = parseInt(req.body.envioEnvia);
   var trayectoenvia = req.body.trayectoenvia;
   var observacionesAdicionales = req.body.observacionesAdicionales;
+  var envioTotal=envioEnvia+seguroEnvia;
 
   //res.send(ciudadR+""+codigoR+""+""+ciudadD+""+codigoD+kilos+unidades+seguro+recaudo+contenido+nomRem+celRem+dirRem+nomDes+celDes+dirDes+tiempoenvia+seguroEnvia+comisionRecaudoEnvia+envioEnvia+trayectoenvia);
 
@@ -20358,7 +20367,7 @@ app.post('/crearguiaTCC', async (req, res) => {
       dscom: observacionesAdicionales,
       idvalor_tranporte: envioEnvia,
       idporvaloracion: seguroEnvia,
-      idvalortotalguia: envioEnvia + seguroEnvia,
+      idvalortotalguia: envioTotal,
       //dsconsec: 
       dsfactor: dsfactor,
       kilosvol: kilos,
@@ -20434,8 +20443,8 @@ app.post('/crearguiaTCC', async (req, res) => {
 </html>
   `;
 
-
-  res.redirect('/estadoGuiasCreadas');
+      
+ res.redirect('/cotizarEnvio');
       });
       
       var displayName = user.displayName;
@@ -20682,9 +20691,9 @@ app.get('/estadoGuiasCreadas', async (req, res) => {
     
           var valorEnvio = $(element).find("td:nth-child(20)").text();
           if (valorEnvio < 14000) {
-            valorEnvio = valorEnvio + 700;
+            valorEnvio = parseInt(valorEnvio) + 700;
           } else {
-            valorEnvio = valorEnvio + 950;
+            valorEnvio = parseInt(valorEnvio + 950);
           }
           var recaudo = $(element).find("td:nth-child(22)").text();
           var estado = $(element).find("td:nth-child(24)").text();

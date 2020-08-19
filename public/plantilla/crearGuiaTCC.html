@@ -29,7 +29,7 @@
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
   
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="cotizar.html">
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
           </div>
@@ -41,7 +41,7 @@
   
         <!-- Nav Item - Cotizar envio -->
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="cotizar.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Cotizar envío</span></a>
         </li>
@@ -73,7 +73,7 @@
   
          <!-- Nav Item - buscar por número de guía -->
          <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="/buscarGuia.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Buscar # de guía</span></a>
         </li>
@@ -152,10 +152,11 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="/index.html">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
+                    Salir
                   </a>
+                  <!--
                   <a class="dropdown-item" href="#">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
@@ -165,10 +166,11 @@
                     Activity Log
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <a class="dropdown-item" href="index.html" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                   </a>
+                  -->
                 </div>
               </li>
   
@@ -187,7 +189,7 @@
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input readonly="readonly" value="CUCUTA(NORTE DE SANTANDER)" name="ciudadRLetra" type="text"
-            class="form-control form-control-user" id="exampleFirstName" placeholder="Ciudad remitente">
+            class="form-control form-control-user" id="exampleFirstName" placeholder="Ciudad remitente" >
           <input value="6447  " type="hidden" class="form-control" name="ciudadRNumero" required>
           <input value="1" type="hidden" class="form-control" name="ciudadDNumero" required>
 
@@ -232,12 +234,12 @@
 
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
-          <input readonly="readonly" value="1" name="recaudo" type="number" class="form-control form-control-user"
+          <input readonly="readonly" value="90000" name="recaudo" type="number" class="form-control form-control-user"
             id="exampleInputPassword" placeholder="Valor recaudo">
         </div>
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="contenido" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Contenido">
+            placeholder="Contenido" required>
         </div>
 
 
@@ -248,25 +250,25 @@
 
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
-          <input type="text" name="nomRem" value="NAT - kATHERINE TORRES" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Nombre">
+          <input type="text" name="nomRem" value="NAT - KATHERINE TORRES" class="form-control form-control-user" id="exampleInputPassword"
+            placeholder="Nombre" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
-          <input type="text" name="dirRem" value="calle" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Dirección - conjunto - apartamento">
+          <input type="text" name="dirRem" value="CALLE 2 NUMERO 10 36" class="form-control form-control-user" id="exampleInputPassword"
+            placeholder="Dirección - conjunto - apartamento" required>
         </div>
 
       </div>
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
-          <input type="text" name="barrioRem" value="probar" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Barrio">
+          <input type="text" name="barrioRem" value="EL PORTAL DE LOS PATIOS" class="form-control form-control-user" id="exampleInputPassword"
+            placeholder="Barrio" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
-          <input type="number" name="celRem"  value="2312" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Celular">
+          <input type="number" name="celRem"  value="3105605961" class="form-control form-control-user" id="exampleInputPassword"
+            placeholder="Celular" required>
         </div>
 
 
@@ -278,24 +280,24 @@
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="nomDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Nombre">
+            placeholder="Nombre" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="dirDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Dirección - conjunto - apartamento">
+            placeholder="Dirección - conjunto - apartamento" required>
         </div>
 
       </div>
       <div class="form-group row">
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="text" name="barrioDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Barrio">
+            placeholder="Barrio" required>
         </div>
 
         <div class="col-sm-6 mb-3 mb-sm-0">
           <input type="number" name="celDes" class="form-control form-control-user" id="exampleInputPassword"
-            placeholder="Celular">
+            placeholder="Celular" required>
         </div>
 
 
