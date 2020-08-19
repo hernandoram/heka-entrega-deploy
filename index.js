@@ -20543,6 +20543,10 @@ app.get('/estadoGuiasCreadas', async (req, res) => {
       if (nombre == "Ruben Peñaranda") {
         var codigo = "0019";
       }
+
+      if (nombre == "maidy galindo") {
+        var codigo = "0024";
+      }
     
       //var opcion = req.body.opcion;
     
