@@ -19557,7 +19557,7 @@ app.post('/listarGuiaEnvia', async (req, res) => {
      </div>
 
 
-     <button type="submit" class="btn btn-primary btn-user btn-block">
+     <button disabled="trawue" type="submit" class="btn btn-primary btn-user btn-block">
        Crear guia
      </button>
      <hr>
@@ -19868,7 +19868,7 @@ app.post('/listarGuiaTcc', async (req, res) => {
       </div>
 
 
-      <button type="submit" class="btn btn-danger btn-user btn-block">
+      <button disabled="true" type="submit" class="btn btn-danger btn-user btn-block">
         Crear guia
       </button>
       <hr>
