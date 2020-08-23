@@ -1,60 +1,157 @@
 <!DOCTYPE html>
-  <html lang="en">
-  
-  <head>
-  
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-  
-    <title>Heka entrega</title>
-  
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  
-  </head>
-  
-  <body id="page-top" class="sidebar-toggled">
-  
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>HEKA - Login</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+  <!-- LOGIN -->
+  <div id="login-mostrar-ocultar" style="display: none;" class="container">
+
+
+
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block "></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Bienvenid@ a HEKA!</h1>
+                  </div>
+
+
+                  <div class="form-group">
+                    <input type="email" id="usuario" class="form-control form-control-user" id="exampleInputEmail"
+                      aria-describedby="emailHelp" placeholder="Correo eléctronico..." required>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="password" id="contrasena" class="form-control form-control-user"
+                      id="exampleInputPassword" placeholder="Password" required>
+                  </div>
+
+
+                  <div class="form-group">
+                    <!--
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                      </div>
+                      -->
+                  </div>
+
+                  <button onclick="iniciarSesion()" type="submit" class="btn btn-danger btn-user btn-block">
+                    Entrar
+                  </button>
+
+
+
+
+                  <!--
+                    <a href="index.html" class="btn btn-google btn-user btn-block">
+                      <i class="fab fa-google fa-fw"></i> Login with Google
+                    </a>
+                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                    </a>
+                    -->
+
+
+                  <div id="inicio">
+
+                  </div>
+
+
+                  <!--
+                  <div class="text-center">
+                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="register.html">Create an Account!</a>
+                  </div>
+                  -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- COTIZADOR -->
+
+  <div id="sesionIniciada-mostrar-ocultar" style="display: none;">
+
+
+
     <!-- Page Wrapper -->
     <div id="wrapper">
-  
+
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
-  
+
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="cotizar.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center"  href="/" >
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
           </div>
           <div class="sidebar-brand-text mx-3">Usuario <sup>2</sup></div>
         </a>
-  
+
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-  
+
         <!-- Nav Item - Cotizar envio -->
         <li class="nav-item">
-          <a class="nav-link" href="cotizar.html">
+          <a class="nav-link" href="/" >
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Cotizar envío</span></a>
         </li>
-  
+
+        
+        
+        
+      
+
         <!-- Divider -->
         <hr class="sidebar-divider">
-  
+
         <!-- Heading -->
         <div class="sidebar-heading">
           Estado
         </div>
-  
+
         <!-- Nav Item - Pages Collapse Menu -->
+        
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
@@ -63,61 +160,91 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Opciones:</h6>
-              <a class="collapse-item" href="/estadoGuiasCreadas">Creadas</a>
-              <a class="collapse-item" href="/estadoGuiasEnProceso">En proceso de envío</a>
-              <a class="collapse-item" href="/estadoGuiasEntregadas">Entregadas</a>
+              <form action="estadoGuiasCreadas" method="post" name="estadoGuiasCreadasForm">
+                <input type="hidden" id="codigoFirebase" name="codigoFirebase" required>
+                <input type="hidden" name="valor" value="6" required>
+              </form>
+              <form action="estadoGuiasCreadas" method="post" name="estadoGuiasEnProcesoForm">
+                <input type="hidden" id="codigoFirebase1" name="codigoFirebase" required>
+                <input type="hidden" name="valor" value="1" required>
+              </form>
+              <form action="estadoGuiasCreadas" method="post" name="estadoGuiasEntregadasForm">
+                <input type="hidden" id="codigoFirebase2" name="codigoFirebase" required>
+                <input type="hidden" name="valor" value="2" required>
+              </form>
+              
+              <a class="collapse-item" href="javascript:estadoGuiasCreadasForm()">Creadas</a>
+              <a class="collapse-item" href="javascript:estadoGuiasEnProcesoForm()">En proceso de envío</a>
+              <a class="collapse-item" href="javascript:estadoGuiasEntregadasForm()">Entregadas</a>
+
+              <script>
+                function estadoGuiasCreadasForm(){
+                  document.estadoGuiasCreadasForm.submit();
+                }
+                function estadoGuiasEnProcesoForm(){
+                  document.estadoGuiasEnProcesoForm.submit();
+                }
+                function estadoGuiasEntregadasForm(){
+                  document.estadoGuiasEntregadasForm.submit();
+                }
+
+              </script>
+
+              
               
             </div>
           </div>
         </li>
-  
-         <!-- Nav Item - buscar por número de guía -->
-         <li class="nav-item">
+        
+
+        <!-- Nav Item - buscar por número de guía -->
+        <li class="nav-item">
           <a class="nav-link" href="/buscarGuia.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Buscar # de guía</span></a>
         </li>
-  
-        
-  
+
+
+
         <!-- Divider -->
         <hr class="sidebar-divider">
-  
-       
-  
-        
-  
-        
-  
-      
-  
-  
+
+
+
+
+
+
+
+
+
+
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-  
+
       </ul>
       <!-- End of Sidebar -->
-  
+
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
-  
+
         <!-- Main Content -->
         <div id="content">
-  
+
           <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-  
+
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
-  
+
             <!-- Topbar Search -->
             <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
               <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                  aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button">
                     <i class="fas fa-search fa-sm"></i>
@@ -125,28 +252,30 @@
                 </div>
               </div>
             </form>
-  
+
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
-  
+
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
               <li class="nav-item dropdown no-arrow d-sm-none">
-                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-search fa-fw"></i>
                 </a>
-               
-  
-              
-              
-              
-  
-              
-  
-              <div class="topbar-divider d-none d-sm-block"></div>
-  
-              <!-- Nav Item - User Information -->
+
+
+
+
+
+
+
+
+                <div class="topbar-divider d-none d-sm-block"></div>
+
+                <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario</span>
                   <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                 </a>
@@ -173,11 +302,12 @@
                   -->
                 </div>
               </li>
-  
+
             </ul>
-  
+
           </nav>
-          <!-- End of Topbar --><!-- Begin Page Content -->
+          <!-- End of Topbar -->
+<!-- Begin Page Content -->
       <div class="container-fluid">
     
         <!-- Page Heading -->
@@ -190,6 +320,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
+
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
@@ -230,12 +361,22 @@
                   </tr>
                 </tfoot>
                 <tbody>
-      <tr>
+      
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
           <td>109</td>
           <td>114010549513</td>
           <td>2020/07/01</td>
           <td>Monica Mendoza Marchena - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>BARRANCABERMEJA(SANTANDER)</td>
           <td>ENVIA</td>
           <td>12188</td>
@@ -261,12 +402,22 @@
             <input type="hidden" name="paraVerEstado" value="114010549513">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
           <td>122</td>
           <td>114010550793</td>
           <td>2020/07/03</td>
           <td>Diana betancur Caicedo - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>BARRANCABERMEJA(SANTANDER)</td>
           <td>ENVIA</td>
           <td>12188</td>
@@ -292,12 +443,22 @@
             <input type="hidden" name="paraVerEstado" value="114010550793">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>199</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>200</td>
           <td>114010559320</td>
           <td>2020/07/21</td>
           <td>Angela Garcia -0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>CALI(VALLE DEL CAUCA)</td>
           <td>ENVIA</td>
           <td>14951950</td>
@@ -323,12 +484,22 @@
             <input type="hidden" name="paraVerEstado" value="114010559320">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>202</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>203</td>
           <td>114010559325</td>
           <td>2020/07/21</td>
           <td>Jesus Carrillo Estrada - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>CIENAGA(MAGDALENA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -354,12 +525,22 @@
             <input type="hidden" name="paraVerEstado" value="114010559325">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>205</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>206</td>
           <td>532164568</td>
           <td>2020/07/22</td>
           <td>Natalia Mantilla - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>BOGOTA(CUNDINAMARCA)</td>
           <td>TCC SA</td>
           <td>14050</td>
@@ -385,12 +566,22 @@
             <input type="hidden" name="paraVerEstado" value="532164568">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>214</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>215</td>
           <td>532164563</td>
           <td>2020/07/22</td>
           <td>Fabian Ricardo cadena Guerrero - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>BOGOTA(CUNDINAMARCA)</td>
           <td>TCC SA</td>
           <td>14610</td>
@@ -416,12 +607,22 @@
             <input type="hidden" name="paraVerEstado" value="532164563">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>241</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>242</td>
           <td>532167240</td>
           <td>2020/07/29</td>
           <td>0016 Jimmy Munoz Villamizar</td>
-          <td>BOGOTA(CUNDINAMARCA)</td>
+          <td>BOGOTA(CUNDINAMARCA)</td>r
           <td>ANAPOIMA(CUNDINAMARCA)</td>
           <td>TCC SA</td>
           <td>29700950</td>
@@ -447,12 +648,22 @@
             <input type="hidden" name="paraVerEstado" value="532167240">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>243</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>244</td>
           <td>439553949</td>
           <td>2020/07/29</td>
           <td>0016 Jimmy Munoz Villamizar</td>
-          <td>BOGOTA(CUNDINAMARCA)</td>
+          <td>BOGOTA(CUNDINAMARCA)</td>r
           <td>ANAPOIMA(CUNDINAMARCA)</td>
           <td>TCC SA</td>
           <td>29700950</td>
@@ -478,12 +689,22 @@
             <input type="hidden" name="paraVerEstado" value="439553949">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>244</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>245</td>
           <td>114010563944</td>
           <td>2020/07/30</td>
           <td>Eduar Ramirez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>TOCANCIPA(CUNDINAMARCA)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -509,12 +730,22 @@
             <input type="hidden" name="paraVerEstado" value="114010563944">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>245</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>246</td>
           <td>114010563945</td>
           <td>2020/07/30</td>
           <td>Diego Fernando Pachon - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>ZIPAQUIRA(CUNDINAMARCA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -540,12 +771,22 @@
             <input type="hidden" name="paraVerEstado" value="114010563945">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>246</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>247</td>
           <td>114010563946</td>
           <td>2020/07/30</td>
           <td>Deiner Enrique Charis - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>FLORENCIA(CAQUETA)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -571,12 +812,22 @@
             <input type="hidden" name="paraVerEstado" value="114010563946">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>247</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>248</td>
           <td>114010563947</td>
           <td>2020/07/30</td>
           <td>JANER IVAN MARTINEZ SUAREZ 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>RIOHACHA(LA GUAJIRA)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -602,12 +853,22 @@
             <input type="hidden" name="paraVerEstado" value="114010563947">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>248</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>249</td>
           <td>114010563949</td>
           <td>2020/07/30</td>
           <td>Yurley Salazar Martinez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>OCANA(NORTE DE SANTANDER)</td>
           <td>ENVIA</td>
           <td>12032</td>
@@ -633,12 +894,22 @@
             <input type="hidden" name="paraVerEstado" value="114010563949">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>258</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>259</td>
           <td>114010563941</td>
           <td>2020/07/30</td>
           <td>EDUAR RAMIREZ - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>TOCANCIPA(CUNDINAMARCA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -664,12 +935,22 @@
             <input type="hidden" name="paraVerEstado" value="114010563941">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>321</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>320</td>
           <td>532169996</td>
           <td>2020/08/04</td>
           <td>Luis Eduardo Elorza - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>YARUMAL(ANTIOQUIA)</td>
           <td>TCC SA</td>
           <td>19100950</td>
@@ -695,12 +976,22 @@
             <input type="hidden" name="paraVerEstado" value="532169996">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>322</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>321</td>
           <td>532169999</td>
           <td>2020/08/04</td>
           <td>Oscar Hernandez Cetina - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>TIPACOQUE(BOYACA)</td>
           <td>TCC SA</td>
           <td>19100950</td>
@@ -726,12 +1017,22 @@
             <input type="hidden" name="paraVerEstado" value="532169999">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>366</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>358</td>
           <td>114010589609</td>
           <td>2020/08/08</td>
           <td>Angie Paola Mohete Muete - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>CHAPARRAL(TOLIMA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -757,12 +1058,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589609">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>367</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>359</td>
           <td>532172099</td>
           <td>2020/08/08</td>
           <td>Lina Maria Martinez Marina - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>LA PALMA(CUNDINAMARCA)</td>
           <td>TCC SA</td>
           <td>19100950</td>
@@ -788,12 +1099,22 @@
             <input type="hidden" name="paraVerEstado" value="532172099">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>368</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>360</td>
           <td>114010589610</td>
           <td>2020/08/08</td>
           <td>Yamileth Maria Paez Guevara - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>RIOSUCIO(CALDAS)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -819,12 +1140,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589610">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>369</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>361</td>
           <td>114010589611</td>
           <td>2020/08/08</td>
           <td>Daniela Loaiza - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>MANIZALES(CALDAS)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -850,12 +1181,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589611">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>370</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>362</td>
           <td>114010589612</td>
           <td>2020/08/08</td>
           <td>Daniela Loaiza - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>MANIZALES(CALDAS)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -881,12 +1222,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589612">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>371</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>363</td>
           <td>114010589613</td>
           <td>2020/08/08</td>
           <td>Darianni Conde - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>GUAMAL(META)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -912,12 +1263,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589613">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>372</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>364</td>
           <td>114010589614</td>
           <td>2020/08/08</td>
           <td>Sandra Milena Roa - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>PAIPA(BOYACA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -943,12 +1304,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589614">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>373</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>365</td>
           <td>114010589615</td>
           <td>2020/08/08</td>
           <td>Flor Deliz Pachu Pazu 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>SANTANDER DE QUILICHAO(CAUCA)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -974,12 +1345,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589615">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>374</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>366</td>
           <td>114010589616</td>
           <td>2020/08/08</td>
           <td>Juli Palacios 0016 </td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>BARBOSA(SANTANDER)</td>
           <td>ENVIA</td>
           <td>12032</td>
@@ -1005,12 +1386,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589616">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>375</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>367</td>
           <td>114010589617</td>
           <td>2020/08/08</td>
           <td>Eudomaro Alarcon 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>PIEDECUESTA(SANTANDER)</td>
           <td>ENVIA</td>
           <td>12032</td>
@@ -1036,12 +1427,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589617">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>376</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>368</td>
           <td>114010589618</td>
           <td>2020/08/08</td>
           <td>Kelly Quintero 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>MONTERIA(CORDOBA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -1067,12 +1468,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589618">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>379</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>371</td>
           <td>114010589639</td>
           <td>2020/08/09</td>
           <td>Sandra Milena Roa - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>PAIPA(BOYACA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -1098,12 +1509,22 @@
             <input type="hidden" name="paraVerEstado" value="114010589639">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>380</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>372</td>
           <td>532172292</td>
           <td>2020/08/09</td>
           <td>Blennys Yajaira Rodriguez Sanchez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>ARAUCA(ARAUCA)</td>
           <td>TCC SA</td>
           <td>19100950</td>
@@ -1129,12 +1550,22 @@
             <input type="hidden" name="paraVerEstado" value="532172292">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>381</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>373</td>
           <td>532173169</td>
           <td>2020/08/10</td>
           <td>Natalia Gomez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>SANTIAGO(PUTUMAYO)</td>
           <td>TCC SA</td>
           <td>17750950</td>
@@ -1160,12 +1591,22 @@
             <input type="hidden" name="paraVerEstado" value="532173169">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>392</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>382</td>
           <td>114010591472</td>
           <td>2020/08/11</td>
           <td>Yuri Marcela Giraldo Ropero - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>LA JAGUA DE IBIRICO(CESAR)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -1191,105 +1632,22 @@
             <input type="hidden" name="paraVerEstado" value="114010591472">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>418</td>
-          <td>114010592874</td>
-          <td>2020/08/13</td>
-          <td>Madeleine Noriega 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CARTAGENA DE INDIAS(BOLIVAR)</td>
-          <td>ENVIA</td>
-          <td>16061950</td>
-          <td>180000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1000730&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010592874">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/13">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010592874">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>419</td>
-          <td>114010592876</td>
-          <td>2020/08/13</td>
-          <td>Maria Mercado Velasco 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BARRANQUILLA(ATLANTICO)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1000732&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010592876">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/13">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010592876">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>431</td>
-          <td>114010593593</td>
-          <td>2020/08/14</td>
-          <td>Victor Martinez Rojas - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BOGOTA(CUNDINAMARCA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1003941&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010593593">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/14">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010593593">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>432</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>411</td>
           <td>532175419</td>
           <td>2020/08/14</td>
           <td>Oscar Valdelamar Tirado - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>PACHAVITA(BOYACA)</td>
           <td>TCC SA</td>
           <td>19100950</td>
@@ -1315,105 +1673,22 @@
             <input type="hidden" name="paraVerEstado" value="532175419">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>434</td>
-          <td>114010593594</td>
-          <td>2020/08/14</td>
-          <td>Fabio Abel Otavo Bocanegra - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>GUAMO(TOLIMA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1003945&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010593594">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/14">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010593594">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>435</td>
-          <td>532175420</td>
-          <td>2020/08/14</td>
-          <td>Jorge Luis Fabra Contreras - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>YARUMAL(ANTIOQUIA)</td>
-          <td>TCC SA</td>
-          <td>19100950</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532175420&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532175420">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/14">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532175420">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>436</td>
-          <td>114010593595</td>
-          <td>2020/08/14</td>
-          <td>Andres Ramirez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>EL RETIRO(ANTIOQUIA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1003950&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010593595">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/14">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010593595">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>437</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>413</td>
           <td>532175422</td>
           <td>2020/08/14</td>
           <td>Luis Manuel Luna Fuentes - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>PUERTO BERRIO(ANTIOQUIA)</td>
           <td>TCC SA</td>
           <td>22850950</td>
@@ -1439,110 +1714,27 @@
             <input type="hidden" name="paraVerEstado" value="532175422">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>439</td>
-          <td>532175423</td>
-          <td>2020/08/14</td>
-          <td>Jose Alfredo Orozco Marquez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BARRANQUILLA(ATLANTICO)</td>
-          <td>TCC SA</td>
-          <td>14050</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532175423&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532175423">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/14">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532175423">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>451</td>
-          <td>114010594007</td>
-          <td>2020/08/17</td>
-          <td>Miguel Angel Torres - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CHIQUINQUIRA(BOYACA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1006912&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010594007">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/17">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010594007">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>452</td>
-          <td>114010594008</td>
-          <td>2020/08/17</td>
-          <td>Jader Ortiz - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>TUMACO(NARINO)</td>
-          <td>ENVIA</td>
-          <td>15506950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1006983&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010594008">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/17">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010594008">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>453</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>425</td>
           <td>532176327</td>
           <td>2020/08/17</td>
           <td>William Jhoany Serrano - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>LA PINTADA(ANTIOQUIA)</td>
           <td>TCC SA</td>
           <td>19100950</td>
           <td>90000</td>
-          <td>GENERADA</td>
+          <td>En proceso de entrega a través de aliado logístico</td>
           <td></td>
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176327&imprimir=1');">
@@ -1563,17 +1755,27 @@
             <input type="hidden" name="paraVerEstado" value="532176327">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>454</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>426</td>
           <td>532176328</td>
           <td>2020/08/17</td>
           <td>Luis Miguel Ruiz - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>CONCORDIA(ANTIOQUIA)</td>
           <td>TCC SA</td>
           <td>20450950</td>
           <td>165000</td>
-          <td>GENERADA</td>
+          <td>En proceso de entrega a través de aliado logístico</td>
           <td></td>
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176328&imprimir=1');">
@@ -1594,17 +1796,27 @@
             <input type="hidden" name="paraVerEstado" value="532176328">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>455</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>427</td>
           <td>532176331</td>
           <td>2020/08/17</td>
           <td>Camila Rubio - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>VILLAVICENCIO(META)</td>
           <td>TCC SA</td>
           <td>14050</td>
           <td>90000</td>
-          <td>GENERADA</td>
+          <td>Envío Preparado para Envio a Destino</td>
           <td></td>
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176331&imprimir=1');">
@@ -1625,74 +1837,22 @@
             <input type="hidden" name="paraVerEstado" value="532176331">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>457</td>
-          <td>114010594013</td>
-          <td>2020/08/18</td>
-          <td>Tania Hernandez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>RESTREPO(META)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1007104&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010594013">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010594013">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>458</td>
-          <td>114010595090</td>
-          <td>2020/08/18</td>
-          <td>Surley Tamara Meza  0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BARRANQUILLA(ATLANTICO)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012737&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595090">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595090">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>459</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>429</td>
           <td>532176385</td>
           <td>2020/08/18</td>
           <td> Daniel Betancourth - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>LA HORMIGA(PUTUMAYO)</td>
           <td>TCC SA</td>
           <td>19100950</td>
@@ -1718,43 +1878,22 @@
             <input type="hidden" name="paraVerEstado" value="532176385">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>460</td>
-          <td>114010594014</td>
-          <td>2020/08/18</td>
-          <td>Guillermo diaz suarez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>VALLEDUPAR(CESAR)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1007112&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010594014">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010594014">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>461</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>430</td>
           <td>114010595091</td>
           <td>2020/08/18</td>
           <td>Robeiro Perez Velasquez  0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>CAUCASIA(ANTIOQUIA)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -1780,79 +1919,27 @@
             <input type="hidden" name="paraVerEstado" value="114010595091">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>464</td>
-          <td>114010595093</td>
-          <td>2020/08/18</td>
-          <td>Kelly Johana David Perez 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>ENVIA</td>
-          <td>9474</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012757&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595093">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595093">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>465</td>
-          <td>114010595094</td>
-          <td>2020/08/18</td>
-          <td>Levinson Valerio Alvarez 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>MEDELLIN(ANTIOQUIA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012759&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595094">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595094">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>466</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>432</td>
           <td>532177167</td>
           <td>2020/08/18</td>
           <td>Reydaldo Cortez Cardenas   0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>VILLAVICENCIO(META)</td>
           <td>TCC SA</td>
           <td>14050</td>
           <td>90000</td>
-          <td>GENERADA</td>
+          <td>Envío Preparado para Envio a Destino</td>
           <td></td>
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177167&imprimir=1');">
@@ -1873,420 +1960,27 @@
             <input type="hidden" name="paraVerEstado" value="532177167">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>468</td>
-          <td>114010594913</td>
-          <td>2020/08/18</td>
-          <td>Victoria Agudelo  0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>JAMUNDI(VALLE DEL CAUCA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012280&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010594913">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010594913">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>470</td>
-          <td>114010595097</td>
-          <td>2020/08/18</td>
-          <td>Jesus David SIlva 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>RIOHACHA(LA GUAJIRA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012801&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595097">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595097">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>474</td>
-          <td>114010595098</td>
-          <td>2020/08/18</td>
-          <td>Cristian Camilo Cantor 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>FUSAGASUGA(CUNDINAMARCA)</td>
-          <td>ENVIA</td>
-          <td>15506950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012803&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595098">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595098">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>477</td>
-          <td>114010595099</td>
-          <td>2020/08/18</td>
-          <td>Jessica Alejandra Caceres 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BOGOTA(CUNDINAMARCA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012805&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595099">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595099">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>488</td>
-          <td>114010595011</td>
-          <td>2020/08/18</td>
-          <td>Libardo Puerta Arroyo 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CARTAGENA DE INDIAS(BOLIVAR)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012560&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595011">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595011">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>490</td>
-          <td>114010595012</td>
-          <td>2020/08/18</td>
-          <td>Cristian Gutierrez 00016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BUCARAMANGA(SANTANDER)</td>
-          <td>ENVIA</td>
-          <td>12032</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012561&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595012">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595012">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>493</td>
-          <td>114010595013</td>
-          <td>2020/08/18</td>
-          <td>Carlos Andres Salgado Lugo 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>GARZON(HUILA)</td>
-          <td>ENVIA</td>
-          <td>15691950</td>
-          <td>170000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012562&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595013">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595013">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>495</td>
-          <td>114010595014</td>
-          <td>2020/08/18</td>
-          <td>Maria Fernanda Contreras Diaz 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BUCARAMANGA(SANTANDER)</td>
-          <td>ENVIA</td>
-          <td>12032</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012563&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595014">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595014">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>496</td>
-          <td>114010595015</td>
-          <td>2020/08/18</td>
-          <td>Mauricio Martinez 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BUCARAMANGA(SANTANDER)</td>
-          <td>ENVIA</td>
-          <td>12032</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012564&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595015">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595015">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>497</td>
-          <td>114010595016</td>
-          <td>2020/08/18</td>
-          <td>Lubian Realpe 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>YUMBO(VALLE DEL CAUCA)</td>
-          <td>ENVIA</td>
-          <td>16061950</td>
-          <td>180000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012565&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595016">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595016">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>517</td>
-          <td>532176336</td>
-          <td>2020/08/18</td>
-          <td>Martha Liliana Castellanos Araque - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>MALAGA(SANTANDER)</td>
-          <td>TCC SA</td>
-          <td>19100950</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176336&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532176336">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532176336">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>518</td>
-          <td>532176340</td>
-          <td>2020/08/18</td>
-          <td>Jorge ivan correa - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>ARMENIA(QUINDIO)</td>
-          <td>TCC SA</td>
-          <td>14050</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176340&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532176340">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532176340">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>519</td>
-          <td>532177296</td>
-          <td>2020/08/18</td>
-          <td>Jhon Fredy Rodriguez 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>IBAGUE(TOLIMA)</td>
-          <td>TCC SA</td>
-          <td>14700950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177296&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532177296">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532177296">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>520</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>439</td>
           <td>532177349</td>
           <td>2020/08/18</td>
           <td>Leiner Yesid Cuesta  0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>QUIBDO(CHOCO)</td>
           <td>TCC SA</td>
           <td>14050</td>
           <td>90000</td>
-          <td>GENERADA</td>
+          <td>En proceso de entrega a través de aliado logístico</td>
           <td></td>
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177349&imprimir=1');">
@@ -2307,74 +2001,22 @@
             <input type="hidden" name="paraVerEstado" value="532177349">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>521</td>
-          <td>114010595073</td>
-          <td>2020/08/18</td>
-          <td>Wilder Cordoba Blandon - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CHIGORODO(ANTIOQUIA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012695&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595073">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595073">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>522</td>
-          <td>532177351</td>
-          <td>2020/08/18</td>
-          <td>Luisa Leandra Arboleda - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CALI(VALLE DEL CAUCA)</td>
-          <td>TCC SA</td>
-          <td>14700950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177351&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532177351">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532177351">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>524</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>440</td>
           <td>114010595076</td>
           <td>2020/08/18</td>
           <td>Benjamin Rangel - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>FUNDACION(MAGDALENA)</td>
           <td>ENVIA</td>
           <td>15506950</td>
@@ -2400,48 +2042,27 @@
             <input type="hidden" name="paraVerEstado" value="114010595076">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>525</td>
-          <td>114010594010</td>
-          <td>2020/08/18</td>
-          <td>Yuli pastrana - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>MONTERIA(CORDOBA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1007074&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010594010">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010594010">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>526</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>441</td>
           <td>532176370</td>
           <td>2020/08/18</td>
           <td>Naila Johanna carreno ropero - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>PAMPLONA(NORTE DE SANTANDER)</td>
           <td>TCC SA</td>
           <td>11123</td>
           <td>165000</td>
-          <td>GENERADA</td>
+          <td>En proceso de entrega a través de aliado logístico</td>
           <td></td>
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176370&imprimir=1');">
@@ -2462,43 +2083,22 @@
             <input type="hidden" name="paraVerEstado" value="532176370">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>528</td>
-          <td>532177360</td>
-          <td>2020/08/18</td>
-          <td>Jarinson Gamarra - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BARRANCABERMEJA(SANTANDER)</td>
-          <td>TCC SA</td>
-          <td>14700950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177360&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532177360">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532177360">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>529</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>443</td>
           <td>114010594011</td>
           <td>2020/08/18</td>
           <td>Orlando rey - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>CUCUTA(NORTE DE SANTANDER)</td>
           <td>ENVIA</td>
           <td>9474</td>
@@ -2524,260 +2124,22 @@
             <input type="hidden" name="paraVerEstado" value="114010594011">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>530</td>
-          <td>114010594012</td>
-          <td>2020/08/18</td>
-          <td>Orlando rey - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>ENVIA</td>
-          <td>9474</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1007088&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010594012">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010594012">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>531</td>
-          <td>114010595083</td>
-          <td>2020/08/18</td>
-          <td>Roldan Espitia - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BUCARAMANGA(SANTANDER)</td>
-          <td>ENVIA</td>
-          <td>12032</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012721&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595083">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595083">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>532</td>
-          <td>532177361</td>
-          <td>2020/08/18</td>
-          <td>Paula Andrade Rua  0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>EL CARMEN DE BOLIVAR(BOLIVAR)</td>
-          <td>TCC SA</td>
-          <td>19100950</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177361&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532177361">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532177361">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>533</td>
-          <td>532176375</td>
-          <td>2020/08/18</td>
-          <td>Jesus david batista hernandez - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>MAICAO(LA GUAJIRA)</td>
-          <td>TCC SA</td>
-          <td>14050</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176375&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532176375">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532176375">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>534</td>
-          <td>114010595084</td>
-          <td>2020/08/18</td>
-          <td>Alexi Isabel Mendoza Montes 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>VALLEDUPAR(CESAR)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012725&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595084">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595084">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>535</td>
-          <td>532176378</td>
-          <td>2020/08/18</td>
-          <td>Jessica lozada Valverde - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BOGOTA(CUNDINAMARCA)</td>
-          <td>TCC SA</td>
-          <td>14700950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176378&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532176378">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532176378">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>536</td>
-          <td>532176381</td>
-          <td>2020/08/18</td>
-          <td>Milenis Rueda - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>SOLEDAD(ATLANTICO)</td>
-          <td>TCC SA</td>
-          <td>14050</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532176381&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532176381">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/18">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532176381">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>537</td>
-          <td>532177564</td>
-          <td>2020/08/19</td>
-          <td>Walter Camilo Madrid Jaramillo - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>REMEDIOS(ANTIOQUIA)</td>
-          <td>TCC SA</td>
-          <td>19100950</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177564&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532177564">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532177564">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>538</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>447</td>
           <td>114010595101</td>
           <td>2020/08/19</td>
           <td>Dubarney Joan Ambo Herrera 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>ACACIAS(META)</td>
           <td>ENVIA</td>
           <td>17975950</td>
@@ -2803,198 +2165,22 @@
             <input type="hidden" name="paraVerEstado" value="114010595101">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>539</td>
-          <td>114010595102</td>
-          <td>2020/08/19</td>
-          <td>Francia Lorena Hernandez 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CALI(VALLE DEL CAUCA)</td>
-          <td>ENVIA</td>
-          <td>15506950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012810&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595102">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595102">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>540</td>
-          <td>532177395</td>
-          <td>2020/08/19</td>
-          <td>Juan Carlos Rodriguez 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>CHIRIGUANA(CESAR)</td>
-          <td>TCC SA</td>
-          <td>19100950</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177395&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532177395">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532177395">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>541</td>
-          <td>114010595103</td>
-          <td>2020/08/19</td>
-          <td>Jesica Popa 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>POPAYAN(CAUCA)</td>
-          <td>ENVIA</td>
-          <td>15506950</td>
-          <td>165000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012822&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595103">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595103">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>542</td>
-          <td>114010595224</td>
-          <td>2020/08/19</td>
-          <td>Yudy Nicole Leal Saboya - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BOGOTA(CUNDINAMARCA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1013599&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595224">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595224">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>543</td>
-          <td>114010595104</td>
-          <td>2020/08/19</td>
-          <td>Brayan alfonso Pallares  0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>BARRANQUILLA(ATLANTICO)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012832&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595104">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595104">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>545</td>
-          <td>114010595105</td>
-          <td>2020/08/19</td>
-          <td>Luisa Fernanda Gutierrez 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>MONTERIA(CORDOBA)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1012839&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595105">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595105">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>546</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>448</td>
           <td>114010595322</td>
           <td>2020/08/19</td>
           <td>Irma Rosa Medina 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>SANTA MARTA(MAGDALENA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -3020,12 +2206,22 @@
             <input type="hidden" name="paraVerEstado" value="114010595322">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>547</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>449</td>
           <td>114010595323</td>
           <td>2020/08/19</td>
           <td>Zuleima Sandoval 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>CURUMANI(CESAR)</td>
           <td>ENVIA</td>
           <td>24110950</td>
@@ -3051,79 +2247,27 @@
             <input type="hidden" name="paraVerEstado" value="114010595323">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>548</td>
-          <td>114010595236</td>
-          <td>2020/08/19</td>
-          <td>Carlos Hernandez Bastidas -0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>PASTO(NARINO)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1013639&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595236">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595236">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>549</td>
-          <td>532177747</td>
-          <td>2020/08/19</td>
-          <td>prueba 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>MEDELLIN(ANTIOQUIA)</td>
-          <td>TCC SA</td>
-          <td>14050</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177747&imprimir=1');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="532177747">
-              <input type="hidden" name="transportadora" value="TCC SA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="532177747">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>550</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>452</td>
           <td>532177551</td>
           <td>2020/08/19</td>
           <td>Javier Oswaldo Torres Nino - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>GAMEZA(BOYACA)</td>
           <td>TCC SA</td>
           <td>19100950</td>
           <td>90000</td>
-          <td>GENERADA</td>
+          <td>Envío Preparado para Envio a Destino</td>
           <td></td>
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532177551&imprimir=1');">
@@ -3144,12 +2288,227 @@
             <input type="hidden" name="paraVerEstado" value="532177551">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
-        </tr><tr>
-          <td>551</td>
-          <td>114010595397</td>
-          <td>2020/08/19</td>
-          <td>prueba 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>465</td>
+          <td>532178721</td>
+          <td>2020/08/21</td>
+          <td>Oscar Valdelamar - 0016</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
+          <td>PACHAVITA(BOYACA)</td>
+          <td>TCC SA</td>
+          <td>19100950</td>
+          <td>90000</td>
+          <td>GENERADA</td>
+          <td></td>
+          <form action="documentoGuia" method="post">
+            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532178721&imprimir=1');">
+            <td><button class="btn btn-danger" type="submit">Guia</button></td>
+            </form>
+    
+            <form action="documentoRotulo" method="post">
+              <input type="hidden" name="paraRotulo" value="532178721">
+              <input type="hidden" name="transportadora" value="TCC SA">
+              <input type="hidden" name="fecha" value="2020/08/21">
+              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
+              </form>
+    
+    
+          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
+           
+          <form action="verEstado" method="post">
+            <input type="hidden" name="paraVerEstado" value="532178721">
+            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
+            </form>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>470</td>
+          <td>114010596459</td>
+          <td>2020/08/21</td>
+          <td>Daniel Betanciourth - 0016</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
+          <td>LA HORMIGA(PUTUMAYO)</td>
+          <td>ENVIA</td>
+          <td>24110950</td>
+          <td>90000</td>
+          <td>GENERADA</td>
+          <td></td>
+          <form action="documentoGuia" method="post">
+            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1018863&idagente=3161&idexp=11635&codagente=&idcliente=0&idremitente=0&imprimir=1&veces=2&idempresa=');">
+            <td><button class="btn btn-danger" type="submit">Guia</button></td>
+            </form>
+    
+            <form action="documentoRotulo" method="post">
+              <input type="hidden" name="paraRotulo" value="114010596459">
+              <input type="hidden" name="transportadora" value="ENVIA">
+              <input type="hidden" name="fecha" value="2020/08/21">
+              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
+              </form>
+    
+    
+          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
+           
+          <form action="verEstado" method="post">
+            <input type="hidden" name="paraVerEstado" value="114010596459">
+            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
+            </form>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>471</td>
+          <td>532178691</td>
+          <td>2020/08/21</td>
+          <td>Oscar Valdelamar - 0016</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
+          <td>PACHAVITA(BOYACA)</td>
+          <td>TCC SA</td>
+          <td>19100950</td>
+          <td>90000</td>
+          <td>GENERADA</td>
+          <td></td>
+          <form action="documentoGuia" method="post">
+            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532178691&imprimir=1');">
+            <td><button class="btn btn-danger" type="submit">Guia</button></td>
+            </form>
+    
+            <form action="documentoRotulo" method="post">
+              <input type="hidden" name="paraRotulo" value="532178691">
+              <input type="hidden" name="transportadora" value="TCC SA">
+              <input type="hidden" name="fecha" value="2020/08/21">
+              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
+              </form>
+    
+    
+          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
+           
+          <form action="verEstado" method="post">
+            <input type="hidden" name="paraVerEstado" value="532178691">
+            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
+            </form>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>472</td>
+          <td>532178693</td>
+          <td>2020/08/21</td>
+          <td>Oscar Valdelamar - 0016</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
+          <td>PACHAVITA(BOYACA)</td>
+          <td>TCC SA</td>
+          <td>23200950</td>
+          <td>90000</td>
+          <td>GENERADA</td>
+          <td></td>
+          <form action="documentoGuia" method="post">
+            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532178693&imprimir=1');">
+            <td><button class="btn btn-danger" type="submit">Guia</button></td>
+            </form>
+    
+            <form action="documentoRotulo" method="post">
+              <input type="hidden" name="paraRotulo" value="532178693">
+              <input type="hidden" name="transportadora" value="TCC SA">
+              <input type="hidden" name="fecha" value="2020/08/21">
+              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
+              </form>
+    
+    
+          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
+           
+          <form action="verEstado" method="post">
+            <input type="hidden" name="paraVerEstado" value="532178693">
+            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
+            </form>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>477</td>
+          <td>532179616</td>
+          <td>2020/08/23</td>
+          <td>kat 0016</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
+          <td>MEDELLIN(ANTIOQUIA)</td>
+          <td>TCC SA</td>
+          <td>14050</td>
+          <td>90000</td>
+          <td>GENERADA</td>
+          <td></td>
+          <form action="documentoGuia" method="post">
+            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../paqueteo/impresiones.unicas.tcc.php?dsconsec=532179616&imprimir=1');">
+            <td><button class="btn btn-danger" type="submit">Guia</button></td>
+            </form>
+    
+            <form action="documentoRotulo" method="post">
+              <input type="hidden" name="paraRotulo" value="532179616">
+              <input type="hidden" name="transportadora" value="TCC SA">
+              <input type="hidden" name="fecha" value="2020/08/23">
+              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
+              </form>
+    
+    
+          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
+           
+          <form action="verEstado" method="post">
+            <input type="hidden" name="paraVerEstado" value="532179616">
+            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
+            </form>
+        </tr>
+          <div id="ciudadRFirebase" style=" display: none;" ></div>
+          
+          <div id="codigoFirebase3" style=" display: none;" ></div>
+          <div id="codigoFirebase4" style=" display: none;" ></div>
+          <div id="nomRem" style=" display: none;" ></div>
+          <div id="dirRem" style=" display: none;" ></div>
+          <div id="barrioRem" style=" display: none;" ></div>
+          <div id="celRem" style=" display: none;" ></div>
+          
+          <tr>
+          <td>478</td>
+          <td>114010597498</td>
+          <td>2020/08/23</td>
+          <td>kat 0016</td>
+          <td>CUCUTA(NORTE DE SANTANDER)</td>r
           <td>MEDELLIN(ANTIOQUIA)</td>
           <td>ENVIA</td>
           <td>14100</td>
@@ -3157,14 +2516,14 @@
           <td>GENERADA</td>
           <td></td>
           <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1014468&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
+            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1023848&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
             <td><button class="btn btn-danger" type="submit">Guia</button></td>
             </form>
     
             <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595397">
+              <input type="hidden" name="paraRotulo" value="114010597498">
               <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
+              <input type="hidden" name="fecha" value="2020/08/23">
               <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
               </form>
     
@@ -3172,38 +2531,7 @@
           <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
            
           <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595397">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr><tr>
-          <td>552</td>
-          <td>114010595252</td>
-          <td>2020/08/19</td>
-          <td>Osmar Rojas Vivan - 0016</td>
-          <td>CUCUTA(NORTE DE SANTANDER)</td>
-          <td>MAGANGUE(BOLIVAR)</td>
-          <td>ENVIA</td>
-          <td>14100</td>
-          <td>90000</td>
-          <td>GENERADA</td>
-          <td></td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="javascript:irImprimir('../coretransporte/pdf/guias/imprimir.recaudos.php?pkid=1013735&idagente=2422&idexp=11635&codagente=&idcliente=42457&idremitente=0&imprimir=1&veces=2&idempresa=');">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="114010595252">
-              <input type="hidden" name="transportadora" value="ENVIA">
-              <input type="hidden" name="fecha" value="2020/08/19">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="114010595252">
+            <input type="hidden" name="paraVerEstado" value="114010597498">
             <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
             </form>
         </tr>   </tbody>
@@ -3254,6 +2582,15 @@
       </div>
     </div>
     </div>
+
+    <!-- FIREBASE -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+
+<!-- main.js -->
+<script src="js/main.js"></script>
     
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
