@@ -39190,9 +39190,9 @@ app.post('/crearguiaTCC', async (req, res) => {
 app.post('/estadoGuiasCreadas', async (req, res) => {
     var codigoFirebase =req.body.codigoFirebase;
     var valor =req.body.valor;
-
+    /*
     var nombre;
-
+      
   if (nombre == "Natalia Mendoza") {
         var codigo = "0001";
       }
@@ -39254,9 +39254,13 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
     
       //var opcion = req.body.opcion;
     
-      let pagina=paginaInicioIndex;
+      
+      
       var numGuia;
       var href;
+      */
+
+      let pagina=paginaInicioIndex;
     
       pagina += `<!-- Begin Page Content -->
       <div class="container-fluid">
@@ -39381,7 +39385,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
         var codigoDes = destinatari.replace(/[a-z -]/gi, "");
         codigoDes = codigoDes.replace(" ", "");
         codigoDes = parseInt(codigoDes);
-        codigo = parseInt(codigo);
+        codigoFirebase = parseInt(codigoFirebase);
     
     
     
@@ -39577,9 +39581,11 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
     
     </html>
     `;
-    
+      /*
       fs.writeFileSync("public/plantilla/estadoGuias.html", pagina);
       res.sendFile(path.resolve(__dirname, 'public/plantilla/estadoGuias.html'));
+      */
+      res.send(pagina);
     
     
       
