@@ -39263,6 +39263,15 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
       let pagina=paginaInicioIndex;
     
       pagina += `<!-- Begin Page Content -->
+
+      <div id="ciudadRFirebase" style=" display: none;" ></div>
+      <div id="codigoFirebase3" style=" display: none;" ></div>
+      <div id="codigoFirebase4" style=" display: none;" ></div>
+      <div id="nomRem" style=" display: none;" ></div>
+      <div id="dirRem" style=" display: none;" ></div>
+      <div id="barrioRem" style=" display: none;" ></div>
+      <div id="celRem" style=" display: none;" ></div>
+
       <div class="container-fluid">
     
         <!-- Page Heading -->
@@ -39449,14 +39458,8 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           */
     
           pagina += `
-          <div id="ciudadRFirebase" style=" display: none;" ></div>
           
-          <div id="codigoFirebase3" style=" display: none;" ></div>
-          <div id="codigoFirebase4" style=" display: none;" ></div>
-          <div id="nomRem" style=" display: none;" ></div>
-          <div id="dirRem" style=" display: none;" ></div>
-          <div id="barrioRem" style=" display: none;" ></div>
-          <div id="celRem" style=" display: none;" ></div>
+          
           
           <tr>
           <td>${id}</td>
