@@ -39411,7 +39411,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           var ciudadRem = $(element).find("td:nth-child(11)").text();
           var ciudadDes = $(element).find("td:nth-child(12)").text();
     
-          var valorEnvio = $(element).find("td:nth-child(20)").text();
+          var valorEnvio = parseInt($(element).find("td:nth-child(20)").text());
           if (valorEnvio < 14000) {
             valorEnvio = parseInt(valorEnvio) + 700;
           } else {
