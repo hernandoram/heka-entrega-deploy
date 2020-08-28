@@ -39371,7 +39371,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           idpais: "",
           idpaisdestino: "",
           idtipoagente: "",
-          dsfechai: "2020-06-16",
+          dsfechai: "2020-08-01",
           dsfechaf: "2022-12-31",
           opcion: valor,
           tipotabla: "",
@@ -41479,7 +41479,61 @@ app.get('/prueba', async (req, res) => {
 });
 
 
+app.get('/SolucionNovedades', async (req, res)=>{
+  
+  const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
+    
+        form: {
+          token: "25b3600e68aa847a6cd9dd5601a73f1c",
+          user: "hernandoram1998@gmai",
+          password: "1072497419"
+    
+        },
+        simple: false,
+        followAllRedirects: true,
+        jar: true
+    
+      });
+    
+      const html2 = await request.post("https://www.aveonline.co/principales/servicios.php", {
+    
+        form: {
+    
+          usuario: "hernandoram1998@gmai",
+          clave: "1072497419"
+    
+        },
+        simple: false,
+        followAllRedirects: true,
+        jar: true
+    
+      });
+  const html = await request.post("https://www.aveonline.co/app/modulos/paqueteo/trazabilidad.servicios.php",{
 
+      form:
+      {
+        tipoguia: "Guia",
+         id: "1014813",
+dscons: "114010595473",
+g: "0",
+idperfil: "0",
+responsa: "Hernando Ramirez Cetina",
+idempresa: "11635",
+idagente: "3161",
+idtranspd: "29",
+      },
+      simple: false,
+      followAllRedirects: true,
+      jar: true
+  });
+
+  const $ = cheerio.load(html);
+  //const funciona= $("#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)").text();
+  const funciona = $("body").html();
+
+  res.send(funciona);
+
+});
 
 
 

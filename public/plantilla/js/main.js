@@ -48,7 +48,7 @@ function activar(a) {
     firebase.auth().signInWithEmailAndPassword(email, password)
         
         .then(function (data) {
-            cargarHtml('inicio',`<h1>sesion iniciada</h1>`);
+            
         })
 
         .catch(function (error) {
