@@ -40398,7 +40398,7 @@ app.post('/documentoGuia', async (req, res) => {
     
         <title>Document</title>
     </head>
-    <body>;
+    <body>`;
 
   pagina += `
     
