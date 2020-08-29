@@ -39371,7 +39371,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           idpais: "",
           idpaisdestino: "",
           idtipoagente: "",
-          dsfechai: "2020-08-01",
+          dsfechai: "2020-06-01",
           dsfechaf: "2022-12-31",
           opcion: valor,
           tipotabla: "",
@@ -39593,7 +39593,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
     
       
       });
-      
+
       
 
 app.post('/estadoGuiasEnProceso', async (req, res) => {
@@ -40134,7 +40134,7 @@ app.post('/estadoGuiasEntregadas', async (req, res) => {
           idpais: "",
           idpaisdestino: "",
           idtipoagente: "",
-          dsfechai: "2020-06-16",
+          dsfechai: "2020-08-26",
           dsfechaf: "2022-12-31",
           opcion: 2,
           tipotabla: "",
