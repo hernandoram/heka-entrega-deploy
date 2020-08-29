@@ -40402,7 +40402,8 @@ app.post('/documentoGuia', async (req, res) => {
 
   pagina += `
     
-    <iframe height="1500" width="1500" src="https://www.aveonline.co/app/modulos${guia}" frameborder="0"></iframe>
+    <iframe height="1500" width="1500" src="https://drive.google.com/viewerng/
+viewer?embedded=true&url=https://www.aveonline.co/app/modulos${guia}" frameborder="0"></iframe>
     `;
 
   pagina += ` </body>
