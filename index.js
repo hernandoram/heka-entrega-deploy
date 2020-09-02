@@ -38542,9 +38542,9 @@ app.post('/listarGuiaTcc', async (req, res) => {
   var envioEnvia = req.body.envioEnvia;
   var trayectoenvia = req.body.trayectoenvia;
 
-  //let pagina = paginaInicioIndex;
+  let pagina = paginaInicioIndex;
   
-  let pagina = `<!-- Begin Page Content -->
+  pagina += `<!-- Begin Page Content -->
   <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -38790,7 +38790,7 @@ pagina += ` <form action="crearguiaTCC" method="post">
   
   `;
 */
-  //pagina += paginaFinalIndex;
+  pagina += paginaFinalIndex;
 
   //fs.writeFileSync("public/plantilla/crearGuiaTCC.html", pagina);
   //res.sendFile(path.resolve(__dirname, 'public/plantilla/crearGuiaTCC.html'));
