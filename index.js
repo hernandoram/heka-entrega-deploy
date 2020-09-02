@@ -38794,7 +38794,7 @@ pagina += ` <form action="crearguiaTCC" method="post">
 
   //fs.writeFileSync("public/plantilla/crearGuiaTCC.html", pagina);
   //res.sendFile(path.resolve(__dirname, 'public/plantilla/crearGuiaTCC.html'));
-    res.render('index.hbs',{pagina});
+    res.send(pagina);
 
       });
     
