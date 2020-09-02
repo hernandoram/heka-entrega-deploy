@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || "6200";
 var firebase = require("firebase/app");
+var exphbs =require('express-handlebars');
+var morgan =require('morgan');
 require("firebase/auth");
 require("firebase/database");
 
@@ -17,7 +19,14 @@ const { parse } = require('path');
 const url = "https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c";
 const url2 = "https://www.aveonline.co/principales/servicios.php";
 const url3 = "https://www.aveonline.co/app/modulos/administrador/default.php";
+app.set('views',path.join(__dirname,'/public/views'));
+app.engine('.hbs',exphbs({
+  defaultLayout: 'main',
+  extname: '.hbs'
+}));
 
+app.set('view engine','.hbs');
+app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public/plantilla'));
 //
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -544,6 +553,7 @@ let paginaInicioIndex=`<!DOCTYPE html>
           </nav>
           <!-- End of Topbar -->
 `;
+
 let paginaCotizador=`<div id="cotizar-mostrar-ocultar" style="display:block;">
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -19045,6 +19055,7 @@ aria-hidden="true">
 </body>
 
 </html>`;
+
 let paginaFinal = `</div>
           <!-- End of Main Content -->
       
@@ -37615,11 +37626,19 @@ app.get('/cotizarEnvio',async (req,res) =>{
   </div>`;
   
    pagina+=paginaFinal; 
+   /*
    fs.writeFileSync("public/plantilla/cotizar.html", pagina);
  
  
    res.sendFile(path.resolve(__dirname, 'public/plantilla/cotizar.html'));
-  
+  */
+
+ fs.writeFileSync("public/views/index.hbs", pagina);
+ res.render('index.hbs');
+
+
+
+      
   
   });
   
@@ -38178,6 +38197,7 @@ app.post('/mostrarnumeros', async (req, res) => {
   
   `;
     */
+    
     pagina += paginaFinalIndex;
 
 
@@ -38194,10 +38214,13 @@ app.post('/mostrarnumeros', async (req, res) => {
   pagina = pagina.replace("ONLINE", "HEKA");
   pagina = pagina.replace("ave", "HEKA");
   pagina = pagina.replace("online", "HEKA");
-
+/*
   fs.writeFileSync("public/plantilla/crearGuia.html", pagina);
   res.sendFile(path.resolve(__dirname, 'public/plantilla/crearGuia.html'));
-  
+  */
+ //fs.writeFileSync('index.hbs', pagina);
+ //res.render('index.hbs',{pagina});
+ res.send(pagina);
 
 
 
@@ -38235,7 +38258,7 @@ app.post('/listarGuiaEnvia', async (req, res) => {
   var trayectoenvia = req.body.trayectoenvia;
 
   let pagina = paginaInicioIndex;
-  pagina += `<!-- Begin Page Content -->
+   pagina += `<!-- Begin Page Content -->
  <div class="container-fluid">
 
    <!-- Page Heading -->
@@ -38487,12 +38510,11 @@ app.post('/listarGuiaEnvia', async (req, res) => {
      */
   pagina += paginaFinalIndex;
 
-  fs.writeFileSync("public/plantilla/crearGuiaENVIA.html", pagina);
-
-
-
-  res.sendFile(path.resolve(__dirname, 'public/plantilla/crearGuiaENVIA.html'));
-
+  //fs.writeFileSync("public/plantilla/crearGuiaENVIA.html", pagina);
+  //res.sendFile(path.resolve(__dirname, 'public/plantilla/crearGuiaENVIA.html'));
+  
+ //res.render('index.hbs',{pagina});
+ res.send(pagina);
       });
       
    
@@ -38520,9 +38542,9 @@ app.post('/listarGuiaTcc', async (req, res) => {
   var envioEnvia = req.body.envioEnvia;
   var trayectoenvia = req.body.trayectoenvia;
 
-  let pagina = paginaInicioIndex;
-
-  pagina += `<!-- Begin Page Content -->
+  //let pagina = paginaInicioIndex;
+  
+  let pagina = `<!-- Begin Page Content -->
   <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -38768,14 +38790,11 @@ pagina += ` <form action="crearguiaTCC" method="post">
   
   `;
 */
-  pagina += paginaFinalIndex;
+  //pagina += paginaFinalIndex;
 
-  fs.writeFileSync("public/plantilla/crearGuiaTCC.html", pagina);
-
-
-
-  res.sendFile(path.resolve(__dirname, 'public/plantilla/crearGuiaTCC.html'));
-
+  //fs.writeFileSync("public/plantilla/crearGuiaTCC.html", pagina);
+  //res.sendFile(path.resolve(__dirname, 'public/plantilla/crearGuiaTCC.html'));
+    res.render('index.hbs',{pagina});
 
       });
     
@@ -39128,7 +39147,7 @@ app.post('/crearguiaTCC', async (req, res) => {
       dscontraentrega: "0",
       dscostorecaudo: comisionRecaudoEnvia,
       codigoserviciorecaudo: "1",
-      serviciorecaudo: "MENSAJERIA EXPRESAY PAQUETERIA",
+      serviciorecaudo: "MENSAJERIA EXPRESA",
       resultadocalculo: calculo,
       valortransrecaudo: recaudo,
       guiaasignada: "0",
@@ -39262,7 +39281,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
 
       let pagina=paginaInicioIndex;
     
-      pagina += `<!-- Begin Page Content -->
+       pagina += `<!-- Begin Page Content -->
 
       <div id="ciudadRFirebase" style=" display: none;" ></div>
       <div id="codigoFirebase3" style=" display: none;" ></div>
@@ -39402,6 +39421,9 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           var id = $(element).find("td:nth-child(1)").text();
           var numGuia = $(element).find("th > a:nth-child(2)").text();
           var transportadora = $(element).find("td:nth-child(13)").text();
+         
+          
+          
           if (transportadora == "TCC SA") {
             numGuia = numGuia.replace("000", "");
           }
@@ -39511,7 +39533,8 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
     </div>
     
     </div>`;
-      pagina += `</div>
+     
+    pagina += `</div>
       <!-- End of Main Content -->
     
       <!-- Footer -->
@@ -39584,11 +39607,14 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
     
     </html>
     `;
-      /*
+      
+    /*
       fs.writeFileSync("public/plantilla/estadoGuias.html", pagina);
       res.sendFile(path.resolve(__dirname, 'public/plantilla/estadoGuias.html'));
       */
+      
       res.send(pagina);
+      
     
     
       
@@ -39596,788 +39622,51 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
 
       
 
-app.post('/estadoGuiasEnProceso', async (req, res) => {
-  
-      var codigoFirebase=req.body.codigoFirebase;
-      var nombre;
-      
-       if (nombre == "Natalia Mendoza") {
-        var codigo = "0001";
-      }
-      if (nombre == "Natalia Mendoza TV") {
-        var codigo = "0002";
-      }
-      if (nombre == "Jhon Alexander Pachon") {
-        var codigo = "0003";
-      }
-      if (nombre == "Kelly Jaimes") {
-        var codigo = "0004";
-      }
-      if (nombre == "Yidy Caterine") {
-        var codigo = "0005";
-      }
-      if (nombre == "Nathaly Alvarez") {
-        var codigo = "0006";
-      }
-      if (nombre == "Juan Pablo Molero") {
-        var codigo = "0007";
-      }
-    
-    
-      if (nombre == "Ximena Cobos") {
-        var codigo = "0010";
-      }
-      if (nombre == "Diana Gomez") {
-        var codigo = "0011";
-      }
-      if (nombre == "Lina Jaimes") {
-        var codigo = "0012";
-      }
-      if (nombre == "Evelin Rodriguez") {
-        var codigo = "0013";
-      }
-      if (nombre == "Yesika Viviana Perez") {
-        var codigo = "0014";
-      }
-      if (nombre == "Daniel Benitez") {
-        var codigo = "0015";
-      }
-      if (nombre == "Katherine Torres") {
-        var codigo = "0016";
-      }
-      if (nombre == "Jose Luis") {
-        var codigo = "0017";
-      }
-      if (nombre == "Veronica Andrea Lobo") {
-        var codigo = "0018";
-      }
-    
-      if (nombre == "Ruben Peñaranda") {
-        var codigo = "0019";
-      }
-    
-      //var opcion = req.body.opcion;
-    
-      let pagina=paginaInicio;
-      var numGuia;
-      var href;
-    
-      pagina += `<!-- Begin Page Content -->
-      <div class="container-fluid">
-    
-        <!-- Page Heading -->
-        
-        
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Guías en proceso de envío</h6>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Guía</th>
-                    <th>Fecha creación</th>
-                    <th>Destinatario</th>
-                    <th>Ciudad Rem</th>
-                    <th>Ciudad Des</th>
-                    <th>Transportadora</th>
-                    <th>Costo envío</th>
-                    <th>Recaudo</th>
-                    <th>Estado</th>
-                    <th>Fecha estado</th>
-                    <th>Guía</th>
-                    <th>Rótulo</th>
-                    <th>Relación de envío</th>
-                    <th>Ver estado</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Guía</th>
-                    <th>Fecha creación</th>
-                    <th>Destinatario</th>
-                    <th>Ciudad Rem</th>
-                    <th>Ciudad Des</th>
-                    <th>Transportadora</th>
-                    <th>Costo envío</th>
-                    <th>Recaudo</th>
-                    <th>Estado</th>
-                    <th>Fecha estado</th>
-                    <th>Guía</th>
-                    <th>Rótulo</th>
-                    <th>Relación de envío</th>
-                    <th>Ver estado</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-      `;
-    
-      const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
-    
-        form: {
-          token: "25b3600e68aa847a6cd9dd5601a73f1c",
-          user: "hernandoram1998@gmai",
-          password: "1072497419"
-    
-        },
-        simple: false,
-        followAllRedirects: true,
-        jar: true
-    
-      });
-    
-      const html2 = await request.post("https://www.aveonline.co/principales/servicios.php", {
-    
-        form: {
-    
-          usuario: "hernandoram1998@gmai",
-          clave: "1072497419"
-    
-        },
-        simple: false,
-        followAllRedirects: true,
-        jar: true
-    
-      });
-    
-      const html = await request.post("https://www.aveonline.co/app/modulos/recaudos/tabla-recaudos.php", {
-    
-        form: {
-          dsconsec: "",
-          dsvalorrecaudo: "",
-          idtransportador: "",
-          dsciudad: "",
-          idciudad: "",
-          puntoo: "",
-          puntoo: "",
-          dsciudadd: "",
-          idciudadd: "",
-          punto: "",
-          idpais: "",
-          idpaisdestino: "",
-          idtipoagente: "",
-          dsfechai: "2020-06-16",
-          dsfechaf: "2022-12-31",
-          opcion: 1,
-          tipotabla: "",
-          idcampobase: "",
-          dscampobase: "",
-    
-        },
-        simple: false,
-        followAllRedirects: true,
-        jar: true
-    
-      });
-    
-      const $ = cheerio.load(html);
-      //const funciona= $("#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)").text();
-      const funciona = $("body").html();
-    
-      $("#tabla-clientes-data > tbody > tr").each((index, element) => {
-        var destinatari = $(element).find("td:nth-child(10)").text();
-        var codigoDes = destinatari.replace(/[a-z -]/gi, "");
-        codigoDes = codigoDes.replace(" ", "");
-        codigoDes = parseInt(codigoDes);
-        codigo = parseInt(codigo);
-    
-    
-    
-        if (codigoDes == codigoFirebase) {
-          var id = $(element).find("td:nth-child(1)").text();
-          var numGuia = $(element).find("th > a:nth-child(2)").text();
-          var transportadora = $(element).find("td:nth-child(13)").text();
-          if (transportadora == "TCC SA") {
-            numGuia = numGuia.replace("000", "");
-          }
-          var href = $(element).find("th > a:nth-child(2)").attr("href");
-          var fecha = $(element).find("td:nth-child(4)").text();
-          var destinatario = $(element).find("td:nth-child(10)").text();
-          var ciudadRem = $(element).find("td:nth-child(11)").text();
-          var ciudadDes = $(element).find("td:nth-child(12)").text();
-    
-          var valorEnvio = $(element).find("td:nth-child(20)").text();
-          if (valorEnvio < 14000) {
-            valorEnvio = valorEnvio + 700;
-          } else {
-            valorEnvio = valorEnvio + 950;
-          }
-          var recaudo = $(element).find("td:nth-child(22)").text();
-          var estado = $(element).find("td:nth-child(24)").text();
-          var fechaEstado = $(element).find("td:nth-child(25)").text();
-    
-          //#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)
-          /*
-          pagina = ` <tr>
-        <th scope="row">${id}</th>
-        <td><a href="#" >${numGuia}</a></td>
-        <td>${fecha}</td>
-        <td>${destinatario}</td>
-        <td>${ciudadRem}</td>
-        <td>${ciudadDes}</td>
-        <td>${transportadora}</td>
-       <!--
-        <td>${valorEnvio}</td>
-        -->
-        <td>${recaudo}</td>
-        <td>${estado}</td>
-        <td>${fechaEstado}</td>
-        <form action="documentoGuia" method="post">
-        <input type="hidden" name="paraGuia" value="${href}">
-        <td><button class="btn btn-danger" type="submit">Guia</button></td>
-        </form>
-    
-        <form action="documentoRotulo" method="post">
-        <input type="hidden" name="paraRotulo" value="${numGuia}">
-        <input type="hidden" name="transportadora" value="${transportadora}">
-        <input type="hidden" name="fecha" value="${fecha}">
-        <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-        </form>
-    
-        <form action="verEstado" method="post">
-        <input type="hidden" name="paraVerEstado" value="${numGuia}">
-        <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-        </form>
-    
-        `;
-          */
-    
-          pagina += `<tr>
-          <td>${id}</td>
-          <td>${numGuia}</td>
-          <td>${fecha}</td>
-          <td>${destinatario}</td>
-          <td>${ciudadRem}</td>
-          <td>${ciudadDes}</td>
-          <td>${transportadora}</td>
-          <td>${valorEnvio}</td>
-          <td>${recaudo}</td>
-          <td>${estado}</td>
-          <td>${fechaEstado}</td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="${href}">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="${numGuia}">
-              <input type="hidden" name="transportadora" value="${transportadora}">
-              <input type="hidden" name="fecha" value="${fecha}">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="${numGuia}">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr>`;
-    
-        }
-    
-      });
-    
-    
-    
-    
-    
-    
-    
-      pagina += `   </tbody>
-      </table>
-    </div>
-    </div>
-    </div>
-    
-    </div>`;
-      pagina += `</div>
-      <!-- End of Main Content -->
-    
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; HEKA ENTREGA 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-    
-    </div>
-    <!-- End of Content Wrapper -->
-    
-    </div>
-    <!-- End of Page Wrapper -->
-    
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-    </a>
-    
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-    </div>
-    
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    
-    </body>
-    
-    </html>
-    `;
-    
-      fs.writeFileSync("public/plantilla/estadoGuias.html", pagina);
-      res.sendFile(path.resolve(__dirname, 'public/plantilla/estadoGuias.html'));
-    
-    
-      
-      });
+
+
+app.get("/novedadespup", async(req,res)=>{
      
-app.post('/estadoGuiasEntregadas', async (req, res) => {
-  
-  var codigoFirebase=req.body.codigoFirebase;    
-  var nombre;
-      
-       if (nombre == "Natalia Mendoza") {
-        var codigo = "0001";
-      }
-      if (nombre == "Natalia Mendoza TV") {
-        var codigo = "0002";
-      }
-      if (nombre == "Jhon Alexander Pachon") {
-        var codigo = "0003";
-      }
-      if (nombre == "Kelly Jaimes") {
-        var codigo = "0004";
-      }
-      if (nombre == "Yidy Caterine") {
-        var codigo = "0005";
-      }
-      if (nombre == "Nathaly Alvarez") {
-        var codigo = "0006";
-      }
-      if (nombre == "Juan Pablo Molero") {
-        var codigo = "0007";
-      }
-    
-    
-      if (nombre == "Ximena Cobos") {
-        var codigo = "0010";
-      }
-      if (nombre == "Diana Gomez") {
-        var codigo = "0011";
-      }
-      if (nombre == "Lina Jaimes") {
-        var codigo = "0012";
-      }
-      if (nombre == "Evelin Rodriguez") {
-        var codigo = "0013";
-      }
-      if (nombre == "Yesika Viviana Perez") {
-        var codigo = "0014";
-      }
-      if (nombre == "Daniel Benitez") {
-        var codigo = "0015";
-      }
-      if (nombre == "Katherine Torres") {
-        var codigo = "0016";
-      }
-      if (nombre == "Jose Luis") {
-        var codigo = "0017";
-      }
-      if (nombre == "Veronica Andrea Lobo") {
-        var codigo = "0018";
-      }
-    
-      if (nombre == "Ruben Peñaranda") {
-        var codigo = "0019";
-      }
-    
-      //var opcion = req.body.opcion;
-    
-      let pagina=paginaInicio;
-      var numGuia;
-      var href;
-    
-      pagina += `<!-- Begin Page Content -->
-      <div class="container-fluid">
-    
-        <!-- Page Heading -->
-        
-        
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Guías entregadas</h6>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Guía</th>
-                    <th>Fecha creación</th>
-                    <th>Destinatario</th>
-                    <th>Ciudad Rem</th>
-                    <th>Ciudad Des</th>
-                    <th>Transportadora</th>
-                    <th>Costo envío</th>
-                    <th>Recaudo</th>
-                    <th>Estado</th>
-                    <th>Fecha estado</th>
-                    <th>Guía</th>
-                    <th>Rótulo</th>
-                    <th>Relación de envío</th>
-                    <th>Ver estado</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Guía</th>
-                    <th>Fecha creación</th>
-                    <th>Destinatario</th>
-                    <th>Ciudad Rem</th>
-                    <th>Ciudad Des</th>
-                    <th>Transportadora</th>
-                    <th>Costo envío</th>
-                    <th>Recaudo</th>
-                    <th>Estado</th>
-                    <th>Fecha estado</th>
-                    <th>Guía</th>
-                    <th>Rótulo</th>
-                    <th>Relación de envío</th>
-                    <th>Ver estado</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-      `;
-    
-      const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
-    
-        form: {
-          token: "25b3600e68aa847a6cd9dd5601a73f1c",
-          user: "hernandoram1998@gmai",
-          password: "1072497419"
-    
-        },
-        simple: false,
-        followAllRedirects: true,
-        jar: true
-    
-      });
-    
-      const html2 = await request.post("https://www.aveonline.co/principales/servicios.php", {
-    
-        form: {
-    
-          usuario: "hernandoram1998@gmai",
-          clave: "1072497419"
-    
-        },
-        simple: false,
-        followAllRedirects: true,
-        jar: true
-    
-      });
-    
-      const html = await request.post("https://www.aveonline.co/app/modulos/recaudos/tabla-recaudos.php", {
-    
-        form: {
-          dsconsec: "",
-          dsvalorrecaudo: "",
-          idtransportador: "",
-          dsciudad: "",
-          idciudad: "",
-          puntoo: "",
-          puntoo: "",
-          dsciudadd: "",
-          idciudadd: "",
-          punto: "",
-          idpais: "",
-          idpaisdestino: "",
-          idtipoagente: "",
-          dsfechai: "2020-08-26",
-          dsfechaf: "2022-12-31",
-          opcion: 2,
-          tipotabla: "",
-          idcampobase: "",
-          dscampobase: "",
-    
-        },
-        simple: false,
-        followAllRedirects: true,
-        jar: true
-    
-      });
-    
-      const $ = cheerio.load(html);
-      //const funciona= $("#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)").text();
-      const funciona = $("body").html();
-    
-      $("#tabla-clientes-data > tbody > tr").each((index, element) => {
-        var destinatari = $(element).find("td:nth-child(10)").text();
-        var codigoDes = destinatari.replace(/[a-z -]/gi, "");
-        codigoDes = codigoDes.replace(" ", "");
-        codigoDes = parseInt(codigoDes);
-        codigo = parseInt(codigo);
-    
-    
-    
-        if (codigoDes == codigoFirebase) {
-          var id = $(element).find("td:nth-child(1)").text();
-          var numGuia = $(element).find("th > a:nth-child(2)").text();
-          var transportadora = $(element).find("td:nth-child(13)").text();
-          if (transportadora == "TCC SA") {
-            numGuia = numGuia.replace("000", "");
-          }
-          var href = $(element).find("th > a:nth-child(2)").attr("href");
-          var fecha = $(element).find("td:nth-child(4)").text();
-          var destinatario = $(element).find("td:nth-child(10)").text();
-          var ciudadRem = $(element).find("td:nth-child(11)").text();
-          var ciudadDes = $(element).find("td:nth-child(12)").text();
-    
-          var valorEnvio = $(element).find("td:nth-child(20)").text();
-          if (valorEnvio < 14000) {
-            valorEnvio = valorEnvio + 700;
-          } else {
-            valorEnvio = valorEnvio + 950;
-          }
-          var recaudo = $(element).find("td:nth-child(22)").text();
-          var estado = $(element).find("td:nth-child(24)").text();
-          var fechaEstado = $(element).find("td:nth-child(25)").text();
-    
-          //#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)
-          /*
-          pagina = ` <tr>
-        <th scope="row">${id}</th>
-        <td><a href="#" >${numGuia}</a></td>
-        <td>${fecha}</td>
-        <td>${destinatario}</td>
-        <td>${ciudadRem}</td>
-        <td>${ciudadDes}</td>
-        <td>${transportadora}</td>
-       <!--
-        <td>${valorEnvio}</td>
-        -->
-        <td>${recaudo}</td>
-        <td>${estado}</td>
-        <td>${fechaEstado}</td>
-        <form action="documentoGuia" method="post">
-        <input type="hidden" name="paraGuia" value="${href}">
-        <td><button class="btn btn-danger" type="submit">Guia</button></td>
-        </form>
-    
-        <form action="documentoRotulo" method="post">
-        <input type="hidden" name="paraRotulo" value="${numGuia}">
-        <input type="hidden" name="transportadora" value="${transportadora}">
-        <input type="hidden" name="fecha" value="${fecha}">
-        <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-        </form>
-    
-        <form action="verEstado" method="post">
-        <input type="hidden" name="paraVerEstado" value="${numGuia}">
-        <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-        </form>
-    
-        `;
-          */
-    
-          pagina += `<tr>
-          <td>${id}</td>
-          <td>${numGuia}</td>
-          <td>${fecha}</td>
-          <td>${destinatario}</td>
-          <td>${ciudadRem}</td>
-          <td>${ciudadDes}</td>
-          <td>${transportadora}</td>
-          <td>${valorEnvio}</td>
-          <td>${recaudo}</td>
-          <td>${estado}</td>
-          <td>${fechaEstado}</td>
-          <form action="documentoGuia" method="post">
-            <input type="hidden" name="paraGuia" value="${href}">
-            <td><button class="btn btn-danger" type="submit">Guia</button></td>
-            </form>
-    
-            <form action="documentoRotulo" method="post">
-              <input type="hidden" name="paraRotulo" value="${numGuia}">
-              <input type="hidden" name="transportadora" value="${transportadora}">
-              <input type="hidden" name="fecha" value="${fecha}">
-              <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
-              </form>
-    
-    
-          <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
-           
-          <form action="verEstado" method="post">
-            <input type="hidden" name="paraVerEstado" value="${numGuia}">
-            <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
-            </form>
-        </tr>`;
-    
-        }
-    
-      });
-    
-    
-    
-    
-    
-    
-    
-      pagina += `   </tbody>
-      </table>
-    </div>
-    </div>
-    </div>
-    
-    </div>`;
-      pagina += `</div>
-      <!-- End of Main Content -->
-    
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; HEKA ENTREGA 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-    
-    </div>
-    <!-- End of Content Wrapper -->
-    
-    </div>
-    <!-- End of Page Wrapper -->
-    
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-    </a>
-    
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-    </div>
-    
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    
-    </body>
-    
-    </html>
-    `;
-    
-      fs.writeFileSync("public/plantilla/estadoGuias.html", pagina);
-      res.sendFile(path.resolve(__dirname, 'public/plantilla/estadoGuias.html'));
-    
-    
-      
-      });
-      
-      
-
-      
-      
+ const browser = await puppeteer.launch({headless: false});
+const page = await browser.newPage();
+await page.goto("https://www.logistica-contraentrega.com/CLIENTES.php");  
+res.send("enviado");   
      
-   
+
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
+      app.get("/novedades2",async(req,res)=>{
+     
+        const html3 = await request.post("https://www.aveonline.co/app/modulos/paqueteo/trazabilidad.servicios.transportadoras.php",{
+         form:{
+          idtranspd: "29",
+          dscons: "114010589446",
+          sin_actualizar: "",
+          
+         },headers:{
+            Cookie: "_ga=GA1.2.1535357615.1564764702; _fbp=fb.1.1564764710457.694885716; PHPSESSID=3smpgnua39nppmnkpp22dedql6",
+            Referer: "https://www.aveonline.co/app/modulos/paqueteo/trazabilidad.servicios.php?tipoguia=Guia&dscons=114010589446&g=0&idperfil=0&idempresa=11635&idagente=3161&idtranspd=29",
+          },
+          simple: false,
+              followAllRedirects: true,
+              jar: true
+      
+        });
+      
+        const html4 = await request.get("https://www.aveonline.co/app/modulos/paqueteo/trazabilidad.servicios.php?tipoguia=Guia&dscons=114010589446&g=0&idperfil=0&idempresa=11635&idagente=3161&idtranspd=29",{
+         headers: {
+             Cookie: "_ga=GA1.2.1535357615.1564764702; _fbp=fb.1.1564764710457.694885716; PHPSESSID=3smpgnua39nppmnkpp22dedql6",
+            
+           }
+          
+         });
+        
+              const $ = cheerio.load(html4);
+              //const funciona= $("#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)").text();
+              const funciona = $("body").html();
+              res.send(funciona);
+            });
+     
 
 
 app.post('/documentoGuia', async (req, res) => {

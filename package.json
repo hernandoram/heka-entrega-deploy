@@ -14,8 +14,10 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
     "firebase": "^7.18.0",
     "jquery.numeric": "^1.0.0",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
     "pdf-lib": "^1.5.0",
     "puppeteer": "^3.0.4",
