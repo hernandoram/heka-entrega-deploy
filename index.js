@@ -438,7 +438,7 @@ let paginaInicioIndex=`<!DOCTYPE html>
               <a class="collapse-item" href="javascript:estadoGuiasCreadasForm()">Creadas</a>
               <a class="collapse-item" href="javascript:estadoGuiasEnProcesoForm()">En proceso de envío</a>
               <a class="collapse-item" href="javascript:estadoGuiasEntregadasForm()">Entregadas</a>
-              <a class="collapse-item" href="/novedades2">Novedades</a>
+              <a class="collapse-item" href="/novedadespup.html">Novedades</a>
 
               <script>
                 function estadoGuiasCreadasForm(){
