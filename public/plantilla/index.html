@@ -168,11 +168,15 @@
                 <input type="hidden" id="codigoFirebase2" name="codigoFirebase" required>
                 <input type="hidden" name="valor" value="2" required>
               </form>
+              <form action="novedades2" method="post" name="novedades2Form">
+                <input type="hidden"  name="codigo_novedades2" required>
+                
+              </form>
               
               <a class="collapse-item" href="javascript:estadoGuiasCreadasForm()">Creadas</a>
               <a class="collapse-item" href="javascript:estadoGuiasEnProcesoForm()">En proceso de envío</a>
               <a class="collapse-item" href="javascript:estadoGuiasEntregadasForm()">Entregadas</a>
-              <a class="collapse-item" href="novedades2">Novedades</a>
+              <a class="collapse-item" href="/novedades2">Novedades</a>
 
               <script>
                 function estadoGuiasCreadasForm(){
@@ -183,6 +187,9 @@
                 }
                 function estadoGuiasEntregadasForm(){
                   document.estadoGuiasEntregadasForm.submit();
+                }
+                function novedades2Form(){
+                  document.novedadesForm.submit();
                 }
 
               </script>
