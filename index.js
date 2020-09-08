@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || "6200";
-var firebase = require("firebase/app");
+
 var exphbs =require('express-handlebars');
 var morgan =require('morgan');
+var firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/database");
+
 
 const bodyParser = require('body-parser');
 const request = require("request-promise");
@@ -30,6 +32,21 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public/plantilla'));
 //
 app.use(bodyParser.urlencoded({ extended: false }));
+/// firebase ///
+var firebaseConfig = {
+  apiKey: "AIzaSyCtzXKSoweSMLPej5-MbkTfQzFH719y-MM",
+  authDomain: "hekaapp-23c89.firebaseapp.com",
+  databaseURL: "https://hekaapp-23c89.firebaseio.com",
+  projectId: "hekaapp-23c89",
+  storageBucket: "hekaapp-23c89.appspot.com",
+  messagingSenderId: "539740310887",
+  appId: "1:539740310887:web:66f9ab535d18addeb173c2"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db=firebase.database();
+
+
 let paginaInicio = `<!DOCTYPE html>
   <html lang="en">
   
@@ -421,6 +438,7 @@ let paginaInicioIndex=`<!DOCTYPE html>
               <a class="collapse-item" href="javascript:estadoGuiasCreadasForm()">Creadas</a>
               <a class="collapse-item" href="javascript:estadoGuiasEnProcesoForm()">En proceso de envío</a>
               <a class="collapse-item" href="javascript:estadoGuiasEntregadasForm()">Entregadas</a>
+              <a class="collapse-item" href="/novedades2">Novedades</a>
 
               <script>
                 function estadoGuiasCreadasForm(){
@@ -529,6 +547,10 @@ let paginaInicioIndex=`<!DOCTYPE html>
                   <a class="dropdown-item" href="javascript:cerrarSesion()">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Salir
+                  </a>
+                  <a class="dropdown-item" href="/novedadespup">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Actualizar
                   </a>
                   <!--
                   <a class="dropdown-item" href="#">
@@ -19041,6 +19063,9 @@ aria-hidden="true">
 <!-- main.js -->
 <script src="js/main.js"></script>
 
+<!-- index.js -->
+<script src="../../index.js" ></script>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
@@ -19123,60 +19148,43 @@ var direccionFirebase;
 var barrioFirebase;
 var celularFirebase;
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCtzXKSoweSMLPej5-MbkTfQzFH719y-MM",
-  authDomain: "hekaapp-23c89.firebaseapp.com",
-  databaseURL: "https://hekaapp-23c89.firebaseio.com",
-  projectId: "hekaapp-23c89",
-  storageBucket: "hekaapp-23c89.appspot.com",
-  messagingSenderId: "539740310887",
-  appId: "1:539740310887:web:7c8fc3d6d2db20f4b173c2"
-};
-
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
 
 
+function insertDatosPerfil(codigo,funcion_boton, num_guia, logo_transportadora, dias_antiguedad, novedad, detalles_novedad,fecha_novedad,destinatario,direccion,numero,ciudad) {
 
-function verificarSesion(){
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      usuario = firebase.database().ref('usuarios').child(user.uid);
-      usuario.on('value', function(snapshot) {
 
-      
-       
-        
-        codigosFirebase=snapshot.val().codigo;
-       ciudadFirebase = snapshot.val().ciudad;
-       nombreFirebase=snapshot.val().nombre;
-       direccionFirebase=snapshot.val().direccion;
-       barrioFirebase=snapshot.val().barrio;
-       celularFirebase=snapshot.val().celular;
-      });
-      
-      var displayName = user.displayName;
-      var email = user.email;
-      correoFirebase=email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
-
-      
-      
-      // ...
-    } else {
-      // User is signed out.
-      // ...
-      sesionIniciada="finalizada";
+  
     
-    }
-  });
+
+      db.ref('GuiasNovedades').child(codigo).child(num_guia).set({
+        funcion_boton: funcion_boton,
+        num_guia: num_guia,
+        logo_transportadora:logo_transportadora,
+        dias_antiguedad:dias_antiguedad,
+        novedad:novedad,
+        detalles_novedad:detalles_novedad,
+        fecha_novedad:fecha_novedad,
+        destinatario:destinatario,
+        direccion:direccion,
+        numero:numero,
+        ciudad:ciudad,
+        
+
+      });
+
+      
+
+
+
+
+      
+  
+
 }
 
+function borrar_datos(){
+  database.ref('GuiasNovedades').remove();
+}
 
 
 
@@ -37654,7 +37662,7 @@ app.get('/cotizarEnvio',async (req,res) =>{
 
 
 app.post('/mostrarnumeros', async (req, res) => {
-  
+ 
 
   var ciudadR = req.body.ciudadR;
   var ciudadRLetra = ciudadR.replace(/[0-9|]/gi, '');
@@ -39421,7 +39429,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           var id = $(element).find("td:nth-child(1)").text();
           var numGuia = $(element).find("th > a:nth-child(2)").text();
           var transportadora = $(element).find("td:nth-child(13)").text();
-         
+        
           
           
           if (transportadora == "TCC SA") {
@@ -39488,7 +39496,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           <td>${numGuia}</td>
           <td>${fecha}</td>
           <td>${destinatario}</td>
-          <td>${ciudadRem}</td>r
+          <td>${ciudadRem}</td>
           <td>${ciudadDes}</td>
           <td>${transportadora}</td>
           <td>${valorEnvio}</td>
@@ -39621,50 +39629,95 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
       });
 
       
+      
+      
+      
 
 
 
-app.get("/novedadespup", async(req,res)=>{
+app.get("/novedadespup", async (req,res)=>{
+     
      
  const browser = await puppeteer.launch({headless: false});
 const page = await browser.newPage();
-await page.goto("https://www.logistica-contraentrega.com/CLIENTES.php");  
-res.send("enviado");   
+await page.goto("https://www.aveonline.co/index.php");  
+
+
+await page.click("div.menu-boton");
+await page.evaluate(() => {
+    document.querySelector('a#iniciar_sesion').click();
+    });
+  await page.type("input#usuario","hernandoram1998@gmai");
+    await page.type("input#clave","1072497419");
+    await page.click("#form-login > button");
+    
+    
+
+
+  //Acá adentro va lo que queremos que haga
+  await page.waitForSelector("#empTable > tbody > tr:nth-child(1) > td:nth-child(1)");
+  const content= await page.content();
+  
+
+const $ = cheerio.load(content);
+      
+       
+    
+      $("#empTable > tbody > tr").each((index, element) => {
+         var boton_text_onlick=$(element).find("td:nth-child(1) > button").attr("onclick");
+           var boton_text=$(element).find("td:nth-child(1)").text();
+         
+          var numero_guia=$(element).find("td:nth-child(2) > a").text();
+         var trasnportadora_logo=$(element).find("td:nth-child(3)> div > img").attr("src");
+        if(trasnportadora_logo=="../../temas/imagen_transpo/104926-1-tcc.jpg"){
+          trasnportadora_logo="http://logos-vector.com/images/logo/xxl/1/7/4/174362/TCC_43d4e_450x450.png";
+        }
+        if(trasnportadora_logo=="../../temas/imagen_transpo/084935-1-envia-094632-1-ENVIA.jpg"){
+        trasnportadora_logo="http://kaplee.com/wp-content/uploads/2017/10/logo-envia.jpg";
+        }
+         var dias_antiguedad=$(element).find("td:nth-child(4)").text();
+         var fecha_generacion=$(element).find("td:nth-child(5)").text();
+         var novedad=$(element).find("td:nth-child(8)").text();
+         var detalle_novedad=$(element).find("td:nth-child(9)").text();
+         var fecha_novedad=$(element).find("td:nth-child(10)").text();
+         var nombre_destinatario=$(element).find("td:nth-child(13)").text();
+         var codigo_destinatario=nombre_destinatario.replace(/[a-z|()-]/gi, '');
+         codigo_destinatario=codigo_destinatario.trim();
+
+
+         var direccion_destinatario=$(element).find("td:nth-child(14)").text();
+         var telefono_destinatario=$(element).find("td:nth-child(15)").text();
+         var ciudad_destinatario=$(element).find("td:nth-child(16)").text();
+         //var href = $(element).find("th > a:nth-child(2)").attr("href");
+        if(codigo_destinatario.length >=1){
+         insertDatosPerfil(codigo_destinatario,boton_text_onlick, numero_guia, trasnportadora_logo, dias_antiguedad, novedad, detalle_novedad,fecha_novedad,nombre_destinatario,direccion_destinatario,telefono_destinatario,ciudad_destinatario);
+        }
+          
+         
+    
+        /////////////ejemplo///////////////
+        /*pagina+=` <tr>
+        <td>${prueba}</td>
+        </tr>`;
+        */
+        
+
+    
+      });
+
+      res.redirect('/');
+      
+    
      
 
 });
 
-
-      app.get("/novedades2",async(req,res)=>{
-     
-        const html3 = await request.post("https://www.aveonline.co/app/modulos/paqueteo/trazabilidad.servicios.transportadoras.php",{
-         form:{
-          idtranspd: "29",
-          dscons: "114010589446",
-          sin_actualizar: "",
-          
-         },headers:{
-            Cookie: "_ga=GA1.2.1535357615.1564764702; _fbp=fb.1.1564764710457.694885716; PHPSESSID=3smpgnua39nppmnkpp22dedql6",
-            Referer: "https://www.aveonline.co/app/modulos/paqueteo/trazabilidad.servicios.php?tipoguia=Guia&dscons=114010589446&g=0&idperfil=0&idempresa=11635&idagente=3161&idtranspd=29",
-          },
-          simple: false,
-              followAllRedirects: true,
-              jar: true
+/////////////// redireccionar a novedadespup.html //////////////////////////////
+app.get("/novedades2",async(req,res)=>{
+  
+       //fs.writeFileSync("public/plantilla/novedadespup.html", pagina);
+     res.sendFile(path.resolve(__dirname, 'public/plantilla/novedadespup.html'));
       
-        });
-      
-        const html4 = await request.get("https://www.aveonline.co/app/modulos/paqueteo/trazabilidad.servicios.php?tipoguia=Guia&dscons=114010589446&g=0&idperfil=0&idempresa=11635&idagente=3161&idtranspd=29",{
-         headers: {
-             Cookie: "_ga=GA1.2.1535357615.1564764702; _fbp=fb.1.1564764710457.694885716; PHPSESSID=3smpgnua39nppmnkpp22dedql6",
-            
-           }
-          
-         });
-        
-              const $ = cheerio.load(html4);
-              //const funciona= $("#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)").text();
-              const funciona = $("body").html();
-              res.send(funciona);
             });
      
 

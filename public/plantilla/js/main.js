@@ -9,6 +9,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+var db=firebase.database();
 
 function value(request) {
     return document.getElementById(request).value;
@@ -20,7 +21,10 @@ function asignacion(request, response) {
    cargarHtml("preciosEnvios-mostrar-ocultar","");
    
 }
-function cargarHtml(request, response) {
+function printHTML(request, response) {
+  return document.getElementById(request).innerHTML += response;
+}
+function inHTML(request, response) {
     return document.getElementById(request).innerHTML = response;
   }
   //DESACTIVAR MODULO
@@ -37,6 +41,10 @@ function validar_email(email) {
 function activar(a) {
     var x = document.getElementById(a);
     x.style.display = "block";
+}
+function activar_query(a) {
+  var x = document.querySelector(a);
+  x.style.display = "block";
 }
 // Iniciar sesion
   function iniciarSesion() {
@@ -86,6 +94,7 @@ function mostrarPrueba(){
         */
        desactivar('login-mostrar-ocultar');
         activar('sesionIniciada-mostrar-ocultar');
+        
         usuario = firebase.database().ref('usuarios').child(user.uid);
       usuario.on('value', function(snapshot) {
         asignacion("ciudadRFirebase", snapshot.val().ciudad);
@@ -98,10 +107,27 @@ function mostrarPrueba(){
         asignacion("dirRem", snapshot.val().direccion);
         asignacion("barrioRem", snapshot.val().barrio);
         asignacion("celRem", snapshot.val().celular);
+       
 
-      
+        ///////// llenar tabla-novedades /////////////////////////////7777
+//if(document.getElementById('tabla-novedades')){
+if(document.getElementById('tabla-novedades')){
+  inHTML("tabla-novedades", "");
+  }    
+  var reference = db.ref('GuiasNovedades').child(snapshot.val().codigo);
+      reference.once('value', function (datas) {
+        var data = datas.val();
+        $.each(data, function (nodo, value) {
+          var sendData = tableNovedades(value.funcion_boton, value.num_guia, value.logo_transportadora, value.dias_antiguedad, value.novedad, 
+            value.detalles_novedad,value.fecha_novedad,value.destinatario,value.direccion,value.numero,value.ciudad);
+            if(document.getElementById('tabla-novedades')){
+          printHTML('tabla-novedades', sendData);
+            }
+        });
+      });
+
+      /////////////////////////////////////////////////////////7
     });
-
 
        
 
@@ -118,3 +144,41 @@ function mostrarPrueba(){
 
 }
 mostrarPrueba();
+
+function tableNovedades(boton_text_onlick, numero_guia, trasnportadora_logo, dias_antiguedad, novedad, 
+  detalle_novedad,fecha_novedad,nombre_destinatario,direccion_destinatario,telefono_destinatario,ciudad_destinatario) {
+  return `<tr>
+  <td><a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=573213359385&text=%C2%A1Hola,%20quiero%20solucionar%20la%20novedad%20de%20mi%20env%C3%ADo!%20%20%20%20%20%20%20%20Guia: ${"" + numero_guia + ""} Novedad: ${"" + novedad + ""} Detalle novedad: ${"" + detalle_novedad + ""}">Gestionar</a></td>
+  
+  <td>${numero_guia}</td>
+  <td> <img src="${trasnportadora_logo}" width="50" height="30"></td>
+  <td>${dias_antiguedad}</td>
+  
+  <td>${novedad}</td>
+  <td>${detalle_novedad}</td>
+  <td>${fecha_novedad}</td>
+  <td>${nombre_destinatario}</td>
+  <td>${direccion_destinatario}</td>
+  <td>${telefono_destinatario}</td>
+  <td>${ciudad_destinatario}</td>
+  
+<!--
+    <form action="documentoRotulo" method="post">
+      <input type="hidden" name="paraRotulo" value="${boton_text_onlick}">
+      
+      <td><button class="btn btn-primary" type="submit">Rotulo</button></td>
+      </form>
+
+
+  <td><button ><a href="https://wa.link/v5ttbo">Relación de envío</a></button></td>
+   
+  <form action="verEstado" method="post">
+    <input type="hidden" name="paraVerEstado" value="">
+    <td><button class="btn btn-primary" type="submit">Ver estado</button></td>
+    </form>
+    -->
+    
+   
+</tr>`
+    ;
+}
