@@ -39428,14 +39428,17 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
         if (codigoDes == codigoFirebase) {
           var id = $(element).find("td:nth-child(1)").text();
           var numGuia = $(element).find("th > a:nth-child(2)").text();
+          var href = $(element).find("th > a:nth-child(2)").attr("href");
+         
           var transportadora = $(element).find("td:nth-child(13)").text();
         
           
           
           if (transportadora == "TCC SA") {
             numGuia = numGuia.replace("000", "");
+            
           }
-          var href = $(element).find("th > a:nth-child(2)").attr("href");
+          
           var fecha = $(element).find("td:nth-child(4)").text();
           var destinatario = $(element).find("td:nth-child(10)").text();
           var ciudadRem = $(element).find("td:nth-child(11)").text();
@@ -39503,10 +39506,14 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           <td>${recaudo}</td>
           <td>${estado}</td>
           <td>${fechaEstado}</td>
+          
           <form action="documentoGuia" method="post">
             <input type="hidden" name="paraGuia" value="${href}">
             <td><button class="btn btn-danger" type="submit">Guia</button></td>
             </form>
+            
+            
+            
     
             <form action="documentoRotulo" method="post">
               <input type="hidden" name="paraRotulo" value="${numGuia}">
@@ -39744,6 +39751,37 @@ app.post('/documentoGuia', async (req, res) => {
 
   pagina += `
     
+    <iframe height="1200" width="1200" src="https://www.aveonline.co/app/modulos${guia}" frameborder="0"></iframe>
+    `;
+
+  pagina += ` </body>
+    </html>`;
+
+  res.send(pagina);
+
+});
+app.post('/documentoGuia2', async (req, res) => {
+  var guia = req.body.paraGuia;
+  guia = guia.replace("javascript:irImprimir('..", "");
+  guia = guia.replace("');", "");
+
+  let pagina = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+        <title>Document</title>
+    </head>
+    <body>`;
+
+  pagina += `
+    
     <iframe height="1500" width="1500" src="https://drive.google.com/viewerng/
 viewer?embedded=true&url=https://www.aveonline.co/app/modulos${guia}" frameborder="0"></iframe>
     `;
@@ -39751,7 +39789,7 @@ viewer?embedded=true&url=https://www.aveonline.co/app/modulos${guia}" frameborde
   pagina += ` </body>
     </html>`;
 
-  res.send(pagina);
+  res.redirect("https://drive.google.com/viewerng/viewer?url=https://www.aveonline.co/app/modulos"+guia);
 
 });
 
