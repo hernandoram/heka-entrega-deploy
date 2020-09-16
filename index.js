@@ -437,7 +437,9 @@ let paginaInicioIndex=`<!DOCTYPE html>
               
               <a class="collapse-item" href="javascript:estadoGuiasCreadasForm()">Creadas</a>
               <a class="collapse-item" href="javascript:estadoGuiasEnProcesoForm()">En proceso de envío</a>
+              
               <a class="collapse-item" href="javascript:estadoGuiasEntregadasForm()">Entregadas</a>
+              
               <a class="collapse-item" href="/novedades2">Novedades</a>
 
               <script>
@@ -19181,6 +19183,28 @@ function insertDatosPerfil(codigo,funcion_boton, num_guia, logo_transportadora, 
   
 
 }
+
+function guardar_guias_enproceso(nodoGuiaEnProceso,codigoDes,id,numGuia,fecha,destinatari,ciudadRem,ciudadDes,transportadora,valorEnvio,recaudo,estado,fechaEstado,href){
+  db.ref(nodoGuiaEnProceso).child(codigoDes).child(numGuia).set({
+    id:id,
+    numGuia:numGuia,
+    fecha: fecha,
+    destinatari: destinatari,
+    ciudadRem: ciudadRem,
+    ciudadDes:ciudadDes,
+    transportadora: transportadora,
+    valorEnvio: valorEnvio,
+    recaudo:recaudo,
+    estado:estado,
+    fechaEstado: fechaEstado,
+    href:href,
+
+    
+    
+
+  });
+}
+    
 
 function borrar_datos(){
   database.ref('GuiasNovedades').remove();
@@ -38358,6 +38382,10 @@ app.post('/listarGuiaEnvia', async (req, res) => {
 
      </div>
 
+     <div class="form-group row">
+  
+  </div>
+
      <h1 class="h3 mb-4 text-gray-700">Datos destinatario</h1>
 
      <div class="form-group row">
@@ -39644,8 +39672,10 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
 
 app.get("/novedadespup", async (req,res)=>{
      
-     
- const browser = await puppeteer.launch({headless: false});
+////////////////////////Guias en proceso////////////////////
+
+  //////////////////////novedaedes//////////////////////////////7     
+ const browser = await puppeteer.launch({headless: true});
 const page = await browser.newPage();
 await page.goto("https://www.aveonline.co/index.php");  
 
@@ -39719,6 +39749,123 @@ const $ = cheerio.load(content);
 
 });
 
+
+app.get("/enprocesopup",async (req,res)=>{
+  const html1 = await request.post("https://www.aveonline.co/principales/servicios/validate_login.php?token=25b3600e68aa847a6cd9dd5601a73f1c&user=hernandoram1998@gmai&password=1072497419", {
+    
+        form: {
+          token: "25b3600e68aa847a6cd9dd5601a73f1c",
+          user: "hernandoram1998@gmai",
+          password: "1072497419"
+    
+        },
+        simple: false,
+        followAllRedirects: true,
+        jar: true
+    
+      });
+    
+      const html2 = await request.post("https://www.aveonline.co/principales/servicios.php", {
+    
+        form: {
+    
+          usuario: "hernandoram1998@gmai",
+          clave: "1072497419"
+    
+        },
+        simple: false,
+        followAllRedirects: true,
+        jar: true
+    
+      });
+
+      ////////////////////////////////////////////////////////////////
+    
+      const html = await request.post("https://www.aveonline.co/app/modulos/recaudos/tabla-recaudos.php", {
+    
+        form: {
+          dsconsec: "",
+          dsvalorrecaudo: "",
+          idtransportador: "",
+          dsciudad: "",
+          idciudad: "",
+          puntoo: "",
+          puntoo: "",
+          dsciudadd: "",
+          idciudadd: "",
+          punto: "",
+          idpais: "",
+          idpaisdestino: "",
+          idtipoagente: "",
+          dsfechai: "2020-06-01",
+          dsfechaf: "2022-12-31",
+          opcion: "1",
+          tipotabla: "",
+          idcampobase: "",
+          dscampobase: "",
+    
+        },
+        simple: false,
+        followAllRedirects: true,
+        jar: true
+    
+      });
+    
+      const $ = cheerio.load(html);
+      //const funciona= $("#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)").text();
+      const funciona = $("body").html();
+    
+      $("#tabla-clientes-data > tbody > tr").each((index, element) => {
+        var destinatari = $(element).find("td:nth-child(10)").text();
+        var codigoDes = destinatari.replace(/[a-z () -]/gi, "");
+        codigoDes = codigoDes.trim();
+        
+    
+    
+    
+        
+          var id = $(element).find("td:nth-child(1)").text();
+          var numGuia = $(element).find("th > a:nth-child(2)").text();
+          var href = $(element).find("th > a:nth-child(2)").attr("href");
+         
+          var transportadora = $(element).find("td:nth-child(13)").text();
+        
+          
+          
+          if (transportadora == "TCC SA") {
+            numGuia = numGuia.replace("000", "");
+            
+          }
+          
+          var fecha = $(element).find("td:nth-child(4)").text();
+          var destinatario = $(element).find("td:nth-child(10)").text();
+          var ciudadRem = $(element).find("td:nth-child(11)").text();
+          var ciudadDes = $(element).find("td:nth-child(12)").text();
+    
+          var valorEnvio = parseInt($(element).find("td:nth-child(20)").text());
+          if (valorEnvio < 14000) {
+            valorEnvio = parseInt(valorEnvio) + 700;
+          } else {
+            valorEnvio = parseInt(valorEnvio + 950);
+          }
+          var recaudo = $(element).find("td:nth-child(22)").text();
+          var estado = $(element).find("td:nth-child(24)").text();
+          var fechaEstado = $(element).find("td:nth-child(25)").text();
+          var nodoGuiaEnProceso="enProcesoDeEntrega";
+          if(codigoDes.length >=1){
+          guardar_guias_enproceso(nodoGuiaEnProceso,codigoDes,id,numGuia,fecha,destinatari,ciudadRem,ciudadDes,transportadora,valorEnvio,recaudo,estado,fechaEstado,href);
+    
+          }
+       
+    
+          
+        
+    
+      });
+      res.send("enviado");
+
+});
+
 /////////////// redireccionar a novedadespup.html //////////////////////////////
 app.get("/novedades2",async(req,res)=>{
   
@@ -39726,6 +39873,13 @@ app.get("/novedades2",async(req,res)=>{
      res.sendFile(path.resolve(__dirname, 'public/plantilla/novedadespup.html'));
       
             });
+
+app.get("/enproceso2",async(req,res)=>{
+  
+              //fs.writeFileSync("public/plantilla/novedadespup.html", pagina);
+            res.sendFile(path.resolve(__dirname, 'public/plantilla/enprocesopup.html'));
+             
+                   });
      
 
 
@@ -39760,38 +39914,7 @@ app.post('/documentoGuia', async (req, res) => {
   res.send(pagina);
 
 });
-app.post('/documentoGuia2', async (req, res) => {
-  var guia = req.body.paraGuia;
-  guia = guia.replace("javascript:irImprimir('..", "");
-  guia = guia.replace("');", "");
 
-  let pagina = `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-        <title>Document</title>
-    </head>
-    <body>`;
-
-  pagina += `
-    
-    <iframe height="1500" width="1500" src="https://drive.google.com/viewerng/
-viewer?embedded=true&url=https://www.aveonline.co/app/modulos${guia}" frameborder="0"></iframe>
-    `;
-
-  pagina += ` </body>
-    </html>`;
-
-  res.redirect("https://drive.google.com/viewerng/viewer?url=https://www.aveonline.co/app/modulos"+guia);
-
-});
 
 app.post('/documentoRotulo', async (req, res) => {
   var rotulo = req.body.paraRotulo;
@@ -40856,6 +40979,22 @@ app.get('/prueba', async (req, res) => {
   fs.writeFileSync("hhh.html", html);
 
   res.send("envioo");
+
+});
+
+app.get('/envia_puntos_de_servicio', async (req, res) => {
+
+  const html = await request.get('https://envia.co/contacto');
+
+  const $ = cheerio.load(html);
+      //const funciona= $("#tabla-clientes-data > tbody > tr:nth-child(1) > th > a:nth-child(2)").text();
+      const funciona = $("html").html();
+  
+  fs.writeFileSync("enviaPuntos.html", funciona);
+
+
+
+  res.sendFile(path.resolve(__dirname, 'enviaPuntos.html'));
 
 });
 

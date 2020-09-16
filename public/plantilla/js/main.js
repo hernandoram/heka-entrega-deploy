@@ -113,7 +113,10 @@ function mostrarPrueba(){
 //if(document.getElementById('tabla-novedades')){
 if(document.getElementById('tabla-novedades')){
   inHTML("tabla-novedades", "");
-  }    
+  }
+  if(document.getElementById('tabla-enproceso')){
+    inHTML("tabla-enproceso", "");
+    }       
   var reference = db.ref('GuiasNovedades').child(snapshot.val().codigo);
       reference.once('value', function (datas) {
         var data = datas.val();
@@ -125,6 +128,8 @@ if(document.getElementById('tabla-novedades')){
             }
         });
       });
+
+       
 
       /////////////////////////////////////////////////////////7
     });
@@ -180,5 +185,53 @@ function tableNovedades(boton_text_onlick, numero_guia, trasnportadora_logo, dia
     
    
 </tr>`
+    ;
+}
+
+function tableEnProceso(id,numGuia,fecha,destinatario,ciudadRem,ciudadDes,transportadora,valorEnvio,recaudo,estado,fechaEstado,href) {
+  return `
+  <tr>
+  <td><form action="documentoGuia" method="post">
+    <input type="hidden" name="paraGuia" value="${href}">
+    <button class="btn btn-danger" type="submit">Guia</button>
+    </form>
+    </td>
+    
+    
+
+    <td><form action="documentoRotulo" method="post">
+      <input type="hidden" name="paraRotulo" value="${numGuia}">
+      <input type="hidden" name="transportadora" value="${transportadora}">
+      <input type="hidden" name="fecha" value="${fecha}">
+      <button class="btn btn-primary" type="submit">Rotulo</button>
+      </form>
+      </td>
+
+
+  
+   
+  
+  <!--
+    <td style="display:none;" >${id}</td>
+  -->
+    <td>${numGuia}</td>
+  <td>${fecha}</td>
+  <td>${destinatario}</td>
+  <td>${ciudadRem}</td>
+  <td>${ciudadDes}</td>
+  <td>${transportadora}</td>
+  <td>${valorEnvio}</td>
+  <td>${recaudo}</td>
+  <td>${estado}</td>
+  <td>${fechaEstado}</td>
+  <td>
+  <form action="verEstado" method="post">
+    <input type="hidden" name="paraVerEstado" value="${numGuia}">
+    <button class="btn btn-primary" type="submit">Ver estado</button>
+    </form>
+    </td>
+  
+</tr>
+`
     ;
 }
