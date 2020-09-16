@@ -19065,8 +19065,7 @@ aria-hidden="true">
 <!-- main.js -->
 <script src="js/main.js"></script>
 
-<!-- index.js -->
-<script src="../../index.js" ></script>
+
 
 
 <!-- Bootstrap core JavaScript-->
@@ -19184,26 +19183,7 @@ function insertDatosPerfil(codigo,funcion_boton, num_guia, logo_transportadora, 
 
 }
 
-function guardar_guias_enproceso(nodoGuiaEnProceso,codigoDes,id,numGuia,fecha,destinatari,ciudadRem,ciudadDes,transportadora,valorEnvio,recaudo,estado,fechaEstado,href){
-  db.ref(nodoGuiaEnProceso).child(codigoDes).child(numGuia).set({
-    id:id,
-    numGuia:numGuia,
-    fecha: fecha,
-    destinatari: destinatari,
-    ciudadRem: ciudadRem,
-    ciudadDes:ciudadDes,
-    transportadora: transportadora,
-    valorEnvio: valorEnvio,
-    recaudo:recaudo,
-    estado:estado,
-    fechaEstado: fechaEstado,
-    href:href,
 
-    
-    
-
-  });
-}
     
 
 function borrar_datos(){
@@ -39426,7 +39406,7 @@ app.post('/estadoGuiasCreadas', async (req, res) => {
           idpais: "",
           idpaisdestino: "",
           idtipoagente: "",
-          dsfechai: "2020-06-01",
+          dsfechai: "2020-08-01",
           dsfechaf: "2022-12-31",
           opcion: valor,
           tipotabla: "",
@@ -39675,7 +39655,7 @@ app.get("/novedadespup", async (req,res)=>{
 ////////////////////////Guias en proceso////////////////////
 
   //////////////////////novedaedes//////////////////////////////7     
- const browser = await puppeteer.launch({headless: true});
+ const browser = await puppeteer.launch({headless: false});
 const page = await browser.newPage();
 await page.goto("https://www.aveonline.co/index.php");  
 
@@ -39742,12 +39722,54 @@ const $ = cheerio.load(content);
     
       });
 
+      browser.close();
+
       res.redirect('/');
       
     
      
 
 });
+
+app.get("/rocket", async (req,res)=>{
+     
+  ////////////////////////Guias en proceso////////////////////
+  
+    //////////////////////novedaedes//////////////////////////////7     
+   const browser = await puppeteer.launch({headless: false});
+  const page = await browser.newPage();
+  await page.goto("https://www.rocketfy.co/cotizador");  
+  
+  /*
+  await page.click("div.menu-boton");
+  await page.evaluate(() => {
+      document.querySelector('a#iniciar_sesion').click();
+      });
+    await page.type("input#usuario","hernandoram1998@gmai");
+      await page.type("input#clave","1072497419");
+      await page.click("#form-login > button");
+      
+      
+  
+  
+    //Acá adentro va lo que queremos que haga
+    await page.waitForSelector("#empTable > tbody > tr:nth-child(1) > td:nth-child(1)");
+    const content= await page.content();
+    
+  
+  const $ = cheerio.load(content);
+  */
+        
+         
+      
+        
+  
+        res.redirect('/');
+        
+      
+       
+  
+  });
 
 
 app.get("/enprocesopup",async (req,res)=>{
